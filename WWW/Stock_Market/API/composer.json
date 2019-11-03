@@ -1,0 +1,24 @@
+{
+  "name": "andrewbo/robinhood-php-lib",
+  "type": "library",
+  "description": "Another PHP library to wrap the robinhood.com API (https://api.robinhood.com/)",
+  "keywords": ["robinhood", "API"],
+  "homepage": "https://github.com/andrewbo/robinhood-php-lib",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andrey Bocharov",
+      "email": "andrey.bocharov@yii-develop.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Andrewbo\\Robinhood\\": "src"
+    }
+  }
+}

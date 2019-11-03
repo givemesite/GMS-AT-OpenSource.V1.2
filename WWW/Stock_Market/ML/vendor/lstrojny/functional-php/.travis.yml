@@ -1,0 +1,21 @@
+language: php
+sudo: false
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3
+  - nightly
+
+matrix:
+  fast_finish: true
+  include:
+    - php: hhvm
+      sudo: true
+      dist: trusty
+      group: edge # Until the next stable image update after 2016-12-01
+  allow_failures:
+    - php: hhvm
+
+before_script: composer install
+script: vendor/bin/phpunit --debug

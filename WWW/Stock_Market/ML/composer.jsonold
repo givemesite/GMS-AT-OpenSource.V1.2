@@ -1,0 +1,29 @@
+{
+    "name": "cloudmanic/robinhood",
+    
+    "description": "Wrapper to the Robinhood API",
+    
+    "license": "MIT",
+    
+    "homepage": "https://cloudmanic.com",
+
+    "minimum-stability": "dev",    
+    
+    "authors": [
+        {
+            "name": "Spicer Matthews",
+            "email": "spicer@cloudmanic.com"
+        }
+    ],
+    
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "~6.0"
+    },    
+    
+    "autoload": {
+      "psr-4": {
+        "Cloudmanic\\RobinHood\\": "src/"
+      }
+    }
+}

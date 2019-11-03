@@ -1,0 +1,34 @@
+{
+
+    "name": "phpbench/container",
+    "description": "Simple, configurable, service container.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Leech",
+            "email": "daniel@dantleech.com"
+        }
+    ],
+    "require": {
+        "psr/container": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8.36"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpBench\\DependencyInjection\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpBench\\DependencyInjection\\Tests\\": "tests/",
+            "PhpBench\\DependencyInjection\\Benchmarks\\": "benchmarks/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

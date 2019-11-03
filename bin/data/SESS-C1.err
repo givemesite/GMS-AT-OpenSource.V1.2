@@ -1,0 +1,26 @@
+2018-07-26 23:54:22 4440 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-07-26 23:54:22 4440 [Note] InnoDB: Uses event mutexes
+2018-07-26 23:54:22 4440 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-07-26 23:54:22 4440 [Note] InnoDB: Number of pools: 1
+2018-07-26 23:54:22 4440 [Note] InnoDB: Using generic crc32 instructions
+2018-07-26 23:54:22 4440 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-07-26 23:54:22 4440 [Note] InnoDB: Completed initialization of buffer pool
+2018-07-26 23:54:22 4440 [Note] InnoDB: The first innodb_system data file 'ibdata1' did not exist. A new tablespace will be created!
+2018-07-26 23:54:22 4440 [Note] InnoDB: Setting file '.\ibdata1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-07-26 23:54:22 4440 [Note] InnoDB: File '.\ibdata1' size is now 12 MB.
+2018-07-26 23:54:22 4440 [Note] InnoDB: Setting log file .\ib_logfile101 size to 50331648 bytes
+2018-07-26 23:54:22 4440 [Note] InnoDB: Setting log file .\ib_logfile1 size to 50331648 bytes
+2018-07-26 23:54:23 4440 [Note] InnoDB: Renaming log file .\ib_logfile101 to .\ib_logfile0
+2018-07-26 23:54:23 4440 [Note] InnoDB: New log files created, LSN=45790
+2018-07-26 23:54:23 4440 [Note] InnoDB: Doublewrite buffer not found: creating new
+2018-07-26 23:54:24 4440 [Note] InnoDB: Doublewrite buffer created
+2018-07-26 23:54:24 4440 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-07-26 23:54:24 4440 [Note] InnoDB: Creating foreign key constraint system tables.
+2018-07-26 23:54:24 4440 [Note] InnoDB: Creating tablespace and datafile system tables.
+2018-07-26 23:54:24 4440 [Note] InnoDB: Creating sys_virtual system tables.
+2018-07-26 23:54:24 4440 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-07-26 23:54:24 4440 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-07-26 23:54:24 4440 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-07-26 23:54:24 4440 [Note] InnoDB: Waiting for purge to start
+2018-07-26 23:54:24 4440 [Note] InnoDB: 5.7.21 started; log sequence number 0
+2018-07-26 23:54:24 4440 [Note] Plugin 'FEEDBACK' is disabled.

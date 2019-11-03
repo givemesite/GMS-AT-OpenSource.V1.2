@@ -1,0 +1,57 @@
+2019-03-04  9:43:53 4168 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2019-03-04  9:43:53 4168 [Note] InnoDB: Uses event mutexes
+2019-03-04  9:43:53 4168 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2019-03-04  9:43:53 4168 [Note] InnoDB: Number of pools: 1
+2019-03-04  9:43:53 4168 [Note] InnoDB: Using generic crc32 instructions
+2019-03-04  9:43:53 4168 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2019-03-04  9:43:53 4168 [Note] InnoDB: Completed initialization of buffer pool
+2019-03-04  9:43:53 4168 [Note] InnoDB: The first innodb_system data file 'ibdata1' did not exist. A new tablespace will be created!
+2019-03-04  9:43:53 4168 [Note] InnoDB: Setting file '.\ibdata1' size to 12 MB. Physically writing the file full; Please wait ...
+2019-03-04  9:43:53 4168 [Note] InnoDB: File '.\ibdata1' size is now 12 MB.
+2019-03-04  9:43:53 4168 [Note] InnoDB: Setting log file .\ib_logfile101 size to 50331648 bytes
+2019-03-04  9:43:53 4168 [Note] InnoDB: Setting log file .\ib_logfile1 size to 50331648 bytes
+2019-03-04  9:43:54 4168 [Note] InnoDB: Renaming log file .\ib_logfile101 to .\ib_logfile0
+2019-03-04  9:43:54 4168 [Note] InnoDB: New log files created, LSN=45790
+2019-03-04  9:43:54 4168 [Note] InnoDB: Doublewrite buffer not found: creating new
+2019-03-04  9:43:54 4168 [Note] InnoDB: Doublewrite buffer created
+2019-03-04  9:43:54 4168 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2019-03-04  9:43:54 4168 [Note] InnoDB: Creating foreign key constraint system tables.
+2019-03-04  9:43:54 4168 [Note] InnoDB: Creating tablespace and datafile system tables.
+2019-03-04  9:43:54 4168 [Note] InnoDB: Creating sys_virtual system tables.
+2019-03-04  9:43:54 4168 [Note] InnoDB: Creating shared tablespace for temporary tables
+2019-03-04  9:43:54 4168 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2019-03-04  9:43:54 4168 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2019-03-04  9:43:54 4168 [Note] InnoDB: 5.7.21 started; log sequence number 0
+2019-03-04  9:43:54 4168 [Note] Plugin 'FEEDBACK' is disabled.
+2019-03-04  9:43:54 4168 [ERROR] Could not open mysql.plugin table. Some plugins may be not loaded
+2019-03-04  9:43:54 4168 [ERROR] Can't open and lock privilege tables: Table 'mysql.servers' doesn't exist
+2019-03-04  9:43:54 4168 [Note] Server socket created on IP: '::'.
+2019-03-04  9:43:54 4168 [ERROR] Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist
+2019-03-04 09:43:54 0x5d4  InnoDB: Assertion failure in file D:\win32-packages\build\src\storage\innobase\os\os0file.cc line 6502
+InnoDB: Failing assertion: slot
+InnoDB: We intentionally generate a memory trap.
+InnoDB: Submit a detailed bug report to https://jira.mariadb.org/
+InnoDB: If you get repeated assertion failures or crashes, even
+InnoDB: immediately after the mysqld startup, there may be
+InnoDB: corruption in the InnoDB tablespace. Please refer to
+InnoDB: https://mariadb.com/kb/en/library/xtradbinnodb-recovery-modes/
+InnoDB: about forcing recovery.
+2019-03-04 09:43:54 0xfd4  InnoDB: Assertion failure in file D:\win32-packages\build\src\storage\innobase\os\os0file.cc line 6502
+InnoDB: Failing assertion: slot
+InnoDB: We intentionally generate a memory trap.
+InnoDB: Submit a detailed bug report to https://jira.mariadb.org/
+InnoDB: If you get repeated assertion failures or crashes, even
+InnoDB: immediately after the mysqld startup, there may be
+InnoDB: corruption in the InnoDB tablespace. Please refer to
+InnoDB: https://mariadb.com/kb/en/library/xtradbinnodb-recovery-modes/
+InnoDB: about forcing recovery.
+2019-03-04 09:43:54 0x1434  InnoDB: Assertion failure in file D:\win32-packages\build\src\storage\innobase\os\os0file.cc line 6502
+InnoDB: Failing assertion: slot
+InnoDB: We intentionally generate a memory trap.
+InnoDB: Submit a detailed bug report to https://jira.mariadb.org/
+InnoDB: If you get repeated assertion failures or crashes, even
+InnoDB: immediately after the mysqld startup, there may be
+InnoDB: corruption in the InnoDB tablespace. Please refer to
+InnoDB: https://mariadb.com/kb/en/library/xtradbinnodb-recovery-modes/
+InnoDB: about forcing recovery.
+2019-03-04 09:43:54 0x110c  InnoDB: Assertion failure in file D:\win32-packages\build\src\storag

@@ -1,0 +1,2 @@
+imports:
+    - { resource: '../set/common/comments.yaml' }

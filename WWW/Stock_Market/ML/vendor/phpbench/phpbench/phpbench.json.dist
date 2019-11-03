@@ -1,0 +1,23 @@
+{
+    "bootstrap": "vendor/autoload.php",
+    "path": "benchmarks",
+    "storage": "reports",
+    "storage.reports.connection": {
+        "base_url": "https://phpbench.dantleech.com"
+    },
+    "storage.reports.store_iterations": true,
+    "php_config": {
+        "memory_limit": "1G"
+    },
+    "extensions": [
+        "PhpBench\\Extensions\\XDebug\\XDebugExtension",
+        "PhpBench\\Extensions\\Dbal\\DbalExtension",
+        "PhpBench\\Extension\\ReportsExtension"
+    ],
+    "reports": {
+        "all": {
+            "generator": "composite",
+            "reports": ["env", "default", "aggregate" ]
+        }
+    }
+}

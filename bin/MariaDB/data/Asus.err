@@ -1,0 +1,606 @@
+2018-10-04 16:11:21 0 [Note] InnoDB: The first innodb_system data file 'ibdata1' did not exist. A new tablespace will be created!
+2018-10-04 16:11:21 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:11:21 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:11:21 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:11:21 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:11:21 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:11:21 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:11:21 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:11:21 0 [Note] InnoDB: Setting file '.\ibdata1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:11:21 0 [Note] InnoDB: File '.\ibdata1' size is now 12 MB.
+2018-10-04 16:11:21 0 [Note] InnoDB: Setting log file .\ib_logfile101 size to 50331648 bytes
+2018-10-04 16:11:21 0 [Note] InnoDB: Setting log file .\ib_logfile1 size to 50331648 bytes
+2018-10-04 16:11:21 0 [Note] InnoDB: Renaming log file .\ib_logfile101 to .\ib_logfile0
+2018-10-04 16:11:21 0 [Note] InnoDB: New log files created, LSN=45786
+2018-10-04 16:11:21 0 [Note] InnoDB: Doublewrite buffer not found: creating new
+2018-10-04 16:11:21 0 [Note] InnoDB: Doublewrite buffer created
+2018-10-04 16:11:21 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:11:21 0 [Note] InnoDB: Creating foreign key constraint system tables.
+2018-10-04 16:11:21 0 [Note] InnoDB: Creating tablespace and datafile system tables.
+2018-10-04 16:11:21 0 [Note] InnoDB: Creating sys_virtual system tables.
+2018-10-04 16:11:21 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:11:21 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:11:21 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:11:21 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:11:21 0 [Note] InnoDB: 10.3.9 started; log sequence number 0; transaction id 7
+2018-10-04 16:11:21 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:11:21 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:11:21 0 [ERROR] Aborting
+
+2018-10-04 16:12:37 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:37 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:37 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:37 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:37 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:37 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:37 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:37 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:37 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:37 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:37 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:37 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:12:37 0 [Note] InnoDB: 10.3.9 started; log sequence number 1603959; transaction id 9
+2018-10-04 16:12:37 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:37 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:37
+2018-10-04 16:12:37 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:37 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:37 0 [ERROR] Aborting
+
+2018-10-04 16:12:39 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:39 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:39 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:39 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:39 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:39 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:39 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:39 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:39 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:39 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:39 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:39 0 [Note] InnoDB: 10.3.9 started; log sequence number 1603968; transaction id 9
+2018-10-04 16:12:39 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:39 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:39
+2018-10-04 16:12:39 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:39 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:39 0 [ERROR] Aborting
+
+2018-10-04 16:12:41 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:41 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:41 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:41 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:41 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:41 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:41 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:41 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:41 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:41 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:41 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:41 0 [Note] InnoDB: 10.3.9 started; log sequence number 1603977; transaction id 9
+2018-10-04 16:12:41 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:41 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:41
+2018-10-04 16:12:41 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:41 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:41 0 [ERROR] Aborting
+
+2018-10-04 16:12:43 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:43 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:43 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:43 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:43 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:43 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:43 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:43 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:43 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:43 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:43 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:43 0 [Note] InnoDB: 10.3.9 started; log sequence number 1603986; transaction id 9
+2018-10-04 16:12:43 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:43 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:43
+2018-10-04 16:12:43 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:43 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:43 0 [ERROR] Aborting
+
+2018-10-04 16:12:45 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:45 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:45 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:45 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:45 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:45 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:45 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:45 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:45 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:45 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:45 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:45 0 [Note] InnoDB: 10.3.9 started; log sequence number 1603995; transaction id 9
+2018-10-04 16:12:45 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:45 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:45
+2018-10-04 16:12:45 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:45 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:45 0 [ERROR] Aborting
+
+2018-10-04 16:12:47 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:47 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:47 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:47 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:47 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:47 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:47 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:48 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:48 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:48 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:48 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:48 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604004; transaction id 9
+2018-10-04 16:12:48 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:48 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:48
+2018-10-04 16:12:48 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:48 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:48 0 [ERROR] Aborting
+
+2018-10-04 16:12:49 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:49 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:49 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:49 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:49 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:49 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:49 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:50 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:50 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:50 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:50 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:50 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604013; transaction id 9
+2018-10-04 16:12:50 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:50 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:50
+2018-10-04 16:12:50 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:50 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:50 0 [ERROR] Aborting
+
+2018-10-04 16:12:51 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:51 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:51 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:51 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:51 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:51 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:51 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:52 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:52 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:52 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:52 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:52 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:12:52 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604022; transaction id 9
+2018-10-04 16:12:52 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:52 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:52
+2018-10-04 16:12:52 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:52 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:52 0 [ERROR] Aborting
+
+2018-10-04 16:12:54 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:54 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:54 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:54 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:54 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:54 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:54 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:54 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:54 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:54 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:54 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:54 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:12:54 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604031; transaction id 9
+2018-10-04 16:12:54 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:54 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:54
+2018-10-04 16:12:54 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:54 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:54 0 [ERROR] Aborting
+
+2018-10-04 16:12:56 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:56 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:56 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:56 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:56 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:56 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:56 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:56 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:56 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:56 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:56 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:56 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:12:56 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604040; transaction id 9
+2018-10-04 16:12:56 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:56 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:56
+2018-10-04 16:12:56 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:56 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:56 0 [ERROR] Aborting
+
+2018-10-04 16:12:58 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:12:58 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:12:58 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:12:58 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:12:58 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:12:58 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:12:58 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:12:58 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:12:58 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:12:58 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:12:58 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:12:58 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:12:58 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604049; transaction id 9
+2018-10-04 16:12:58 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:12:58 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:12:58
+2018-10-04 16:12:58 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:12:58 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:12:58 0 [ERROR] Aborting
+
+2018-10-04 16:13:00 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:00 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:00 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:00 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:00 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:00 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:00 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:00 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:00 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:00 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:00 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:00 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:00 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604058; transaction id 9
+2018-10-04 16:13:00 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:00 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:00
+2018-10-04 16:13:00 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:00 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:00 0 [ERROR] Aborting
+
+2018-10-04 16:13:02 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:02 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:02 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:02 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:02 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:02 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:02 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:02 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:02 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:02 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:02 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:02 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604067; transaction id 9
+2018-10-04 16:13:02 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:02 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:02
+2018-10-04 16:13:02 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:02 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:02 0 [ERROR] Aborting
+
+2018-10-04 16:13:04 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:04 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:04 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:04 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:04 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:04 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:04 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:04 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:04 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:04 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:04 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:04 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:04 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604076; transaction id 9
+2018-10-04 16:13:04 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:04 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:04
+2018-10-04 16:13:04 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:04 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:04 0 [ERROR] Aborting
+
+2018-10-04 16:13:06 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:06 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:06 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:06 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:06 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:06 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:06 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:06 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:06 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:06 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:06 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:06 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:06 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604085; transaction id 9
+2018-10-04 16:13:06 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:06 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:06
+2018-10-04 16:13:06 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:06 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:06 0 [ERROR] Aborting
+
+2018-10-04 16:13:08 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:08 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:08 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:08 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:08 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:08 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:08 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:08 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:08 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:08 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:08 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:08 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604110; transaction id 9
+2018-10-04 16:13:08 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:08 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:08
+2018-10-04 16:13:08 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:08 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:08 0 [ERROR] Aborting
+
+2018-10-04 16:13:11 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:11 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:11 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:11 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:11 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:11 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:11 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:11 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:11 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:11 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:11 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:11 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:11 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604119; transaction id 9
+2018-10-04 16:13:11 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:11 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:11
+2018-10-04 16:13:11 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:11 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:11 0 [ERROR] Aborting
+
+2018-10-04 16:13:13 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:13 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:13 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:13 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:13 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:13 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:13 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:14 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:14 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:14 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:14 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:14 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:14 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604128; transaction id 9
+2018-10-04 16:13:14 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:14 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:14
+2018-10-04 16:13:14 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:14 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:14 0 [ERROR] Aborting
+
+2018-10-04 16:13:17 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:17 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:17 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:17 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:17 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:17 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:17 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:19 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:19 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:19 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:19 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:19 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604137; transaction id 9
+2018-10-04 16:13:19 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:19 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:19 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:19 0 [ERROR] Aborting
+
+2018-10-04 16:13:21 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:21 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:21 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:21 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:21 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:21 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:21 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:21 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:21 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:21 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:21 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:21 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:21 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604146; transaction id 9
+2018-10-04 16:13:21 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:21 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:21
+2018-10-04 16:13:21 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:21 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:21 0 [ERROR] Aborting
+
+2018-10-04 16:13:23 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:23 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:23 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:23 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:23 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:23 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:23 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:24 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:24 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:24 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:24 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:24 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:24 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604155; transaction id 9
+2018-10-04 16:13:24 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:24 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:24
+2018-10-04 16:13:24 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:24 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:24 0 [ERROR] Aborting
+
+2018-10-04 16:13:26 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:26 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:26 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:26 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:26 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:26 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:26 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:28 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:28 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:28 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:28 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:28 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:28 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604164; transaction id 9
+2018-10-04 16:13:28 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:28 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:28 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:28 0 [ERROR] Aborting
+
+2018-10-04 16:13:29 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:29 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:29 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:29 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:29 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:29 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:30 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:30 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:30 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:30 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:30 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:30 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:30 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604173; transaction id 9
+2018-10-04 16:13:30 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:30 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:30
+2018-10-04 16:13:30 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:30 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:30 0 [ERROR] Aborting
+
+2018-10-04 16:13:32 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:32 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:32 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:32 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:32 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:32 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:32 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:32 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:32 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:32 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:32 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:32 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:32 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604182; transaction id 9
+2018-10-04 16:13:32 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:32 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:32
+2018-10-04 16:13:32 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:32 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:32 0 [ERROR] Aborting
+
+2018-10-04 16:13:34 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:34 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:34 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:34 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:34 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:34 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:34 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:34 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:34 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:34 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:34 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:34 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:34 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604191; transaction id 9
+2018-10-04 16:13:34 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:34 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:34
+2018-10-04 16:13:34 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:34 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:34 0 [ERROR] Aborting
+
+2018-10-04 16:13:36 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:36 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:36 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:36 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:36 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:36 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:36 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:36 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:36 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:36 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:36 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:36 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604200; transaction id 9
+2018-10-04 16:13:36 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:36 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:36
+2018-10-04 16:13:36 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:36 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:36 0 [ERROR] Aborting
+
+2018-10-04 16:13:38 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:38 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:38 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:38 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:38 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:38 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:38 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:39 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:39 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:39 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:39 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:39 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604209; transaction id 9
+2018-10-04 16:13:39 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:39 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:39
+2018-10-04 16:13:39 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:39 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:39 0 [ERROR] Aborting
+
+2018-10-04 16:13:41 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:41 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:41 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:41 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:41 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:41 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:41 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:41 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:41 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:41 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:41 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:41 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:41 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604218; transaction id 9
+2018-10-04 16:13:41 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:41 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:41
+2018-10-04 16:13:41 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:41 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:41 0 [ERROR] Aborting
+
+2018-10-04 16:13:43 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:43 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:43 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:43 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:43 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:43 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:43 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:43 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:43 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:43 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:43 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:43 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:43 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604227; transaction id 9
+2018-10-04 16:13:43 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:43 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:43
+2018-10-04 16:13:43 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:43 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:43 0 [ERROR] Aborting
+
+2018-10-04 16:13:45 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:13:45 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:13:45 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:13:45 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:13:45 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:13:45 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:13:45 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:13:45 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:13:45 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:13:45 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:13:45 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:13:45 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:13:45 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604236; transaction id 9
+2018-10-04 16:13:45 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:13:45 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:13:45
+2018-10-04 16:13:45 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:13:45 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:13:45 0 [ERROR] Aborting
+
+2018-10-04 16:14:23 0 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2018-10-04 16:14:23 0 [Note] InnoDB: Uses event mutexes
+2018-10-04 16:14:23 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2018-10-04 16:14:23 0 [Note] InnoDB: Number of pools: 1
+2018-10-04 16:14:23 0 [Note] InnoDB: Using SSE2 crc32 instructions
+2018-10-04 16:14:23 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+2018-10-04 16:14:23 0 [Note] InnoDB: Completed initialization of buffer pool
+2018-10-04 16:14:23 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+2018-10-04 16:14:23 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+2018-10-04 16:14:23 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2018-10-04 16:14:23 0 [Note] InnoDB: Setting file '.\ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2018-10-04 16:14:23 0 [Note] InnoDB: File '.\ibtmp1' size is now 12 MB.
+2018-10-04 16:14:23 0 [Note] InnoDB: Waiting for purge to start
+2018-10-04 16:14:23 0 [Note] InnoDB: 10.3.9 started; log sequence number 1604236; transaction id 9
+2018-10-04 16:14:23 0 [Note] InnoDB: Loading buffer pool(s) from c:\work\wt-nmp\bin\mariadb64\data\ib_buffer_pool
+2018-10-04 16:14:23 0 [Note] InnoDB: Buffer pool(s) load completed at 181004 16:14:23
+2018-10-04 16:14:23 0 [Note] Plugin 'FEEDBACK' is disabled.
+2018-10-04 16:14:23 0 [ERROR] c:\work\wt-nmp\bin\mariadb64\bin\mysqld.exe: unknown variable 'defaults-file=c:\work\wt-nmp\conf\mysql.ini'
+2018-10-04 16:14:23 0 [ERROR] Aborting
+

@@ -1,0 +1,359 @@
+html {
+	background: #ddd;
+}
+body {
+	font-family:  tahoma, arial, helvetica, lucida sans, sans-serif;
+	margin: 20px;
+	padding: .5em 1em;
+	border: 1px solid #999;
+	background: #eee;
+	min-width: 600px;
+}
+
+@media (min-width: 940px) {
+	body {
+		margin: 20px auto;
+		max-width:860px;
+	}
+}
+
+.utility {
+	position: absolute;
+	right: 4em;
+	top: 145px;
+	font-size: 0.85em;
+}
+.utility li {
+	display: inline;
+}
+
+
+
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#head ul li, dl ul li, #foot li {
+	list-style: none;
+	display: inline;
+	margin: 0;
+	padding: 0 0.2em;
+}
+ul.aliases, ul.projects, ul.tools {
+	list-style: none;
+	line-height: 25px;
+}
+ul.aliases a, ul.projects a{
+	padding-left: 24px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	background: url(/tools/subdir.png) 0 100% no-repeat;
+}
+
+ul.projects a.local {
+	background-image:url(/tools/home.png);
+}
+ul.tools a, ul.tools li.admin a {
+	padding-right: 22px;
+	background: url(/?img=pngWrench) right center no-repeat;
+	font-weight: normal;
+}
+ul.aliases a, input.button, ul.tools li.admin a {
+	background: url(/?img=pngFolderGo) 0 100% no-repeat;
+}
+ul.tools li.adminer a {
+	background-image: url(/tools/adminer24.png);
+	padding-right: 30px;
+	line-height: 30px;
+}
+ul.tools a, ul.tools li.admin a {
+	background-position: right center;
+}
+
+input.button {
+	min-width:120px;
+	cursor: pointer;
+}
+dl {
+	margin: 0;
+	padding: 0;
+}
+dt {
+	font-weight: bold;
+	text-align: right;
+
+}
+dd {
+	overflow: auto;
+}
+
+
+a {
+	color: #024378;
+	font-weight: bold;
+	text-decoration: none;
+}
+a:hover {
+	color: #04569A;
+	text-decoration: underline;
+}
+a img,:link img,:visited img {
+	border: none;
+}
+
+#foot{
+	margin-top: 1.8em;
+	border-top: 1px solid #999;
+	padding-top: 1em;
+	font-size: 0.85em;
+}
+#phpinfo, #errorLog {
+
+	margin-top: 1em;
+	margin-bottom: 1em;
+	border-bottom: 1px solid #999;
+	padding-bottom: 1.8em;
+}
+#phpinfo .center {
+	font-size: .8em;
+}
+
+
+
+
+#phpinfo td, #phpinfo th, #phpinfo h1, #phpinfo h2 {font-family: sans-serif;}
+#phpinfo pre {margin: 0px; font-family: monospace;}
+#phpinfo a:link {color: #000099; text-decoration: none; background-color: #ffffff;}
+#phpinfo a:hover {text-decoration: underline;}
+#phpinfo table {border-collapse: collapse; min-width:800px;}
+#phpinfo .center {text-align: center;}
+#phpinfo .center table, #phpinfo .center hr { margin-left: auto; margin-right: auto; text-align: left;}
+#phpinfo .center th { text-align: center !important; }
+#phpinfo td, #phpinfo th { border: 1px solid #000000; vertical-align: baseline; padding: 2px; }
+#phpinfo h1 {font-size: 18px;}
+#phpinfo h2 {font-size: 16px;}
+#phpinfo .p {text-align: left;}
+#phpinfo .e {background-color: #ccccff; font-weight: bold; color: #000000; text-align:right; width: 25%; white-space:nowrap;}
+#phpinfo .h {background-color: #9999cc; font-weight: bold; color: #000000;}
+#phpinfo .v {background-color: #FFF; color: #000000; max-width:300px; white-space:normal; word-wrap: break-word; }
+#phpinfo .vr {background-color: #cccccc; text-align: right; color: #000000;}
+#phpinfo img {float: right; border: 0px;}
+#phpinfo hr {width: 800px; background-color: #cccccc; border: 0px; height: 1px; color: #000000;}
+
+
+#foot th {
+	text-align: center;
+}
+#foot a {
+	font-weight: normal;
+}
+#foot th img {
+	vertical-align:middle;
+}
+#foot td {
+	white-space:nowrap;
+	text-align: center;
+	vertical-align: top;
+}
+
+#menu ul.tabs {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	clear: both;
+	height: 22px;
+	margin-top: 14px;
+}
+
+#menu ul.tabs li {
+	float: left;
+	position: relative;
+	display: inline-block;
+	margin-left: 4px;
+	text-align: center;
+	vertical-align: middle;
+}
+#menu ul.tabs li h2 {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+#menu ul.tabs li a {
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #CCC;
+	font-size: 14px;
+}
+
+#menu ul.tabs li a:hover {
+	color: #666;
+}
+
+#menu ul.tabs li a.active {
+	border-bottom: none;
+	background-color: #EEE;
+}
+
+#menu h2 {
+	margin:0;
+	font-size: 1.2em;
+}
+
+.evaluator
+{
+	/*float: left;
+	width: 560px;*/
+	border: 1px solid #ccc;
+	padding: 10px;
+	min-width: 600px;
+	margin: 5px 0;
+	font-size: .9em;
+}
+
+.evaluator .box
+{
+	border: 1px solid #ccc;
+	min-width: 550px;
+	width:99%;
+	padding: 3px;
+	margin-bottom: 5px;
+	/*overflow: auto;*/
+}
+
+.evaluator textarea {
+	resize: vertical;
+}
+
+.parameters
+{
+	float: left;
+	width: 250px;
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.parameters p
+{
+	padding: 1px;
+}
+
+.help
+{
+	width: 410px;
+	float: right;
+	border: 1px solid #ccc;
+	padding: 10px;
+	padding-top:0;
+	padding-right:0;
+}
+
+.help div
+{
+	float: left;
+	width: 20px;
+}
+
+
+.help div.description {
+	float: left;
+	width: 220px;
+}
+#regWrap p, .evaluator.reg p {
+	margin: 1px;
+	padding: 0;
+}
+
+.evaluator.reg input, .evaluator.reg textarea {
+	border: 1px solid #134134;
+	margin: 5px;
+	width: 100%;
+	padding: 1px;
+}
+input,textarea,select {
+	padding: 3px;
+	border: 1px solid #ccc;
+}
+input[type=text], select {
+	font-size: 14px;
+	background-color: #FFF;
+}
+input[type=submit]{
+	font-weight: bold;
+	background-color: #E6F4F7;
+
+}
+input[readonly] {
+
+	background-color: #EEE;
+}
+
+.disabled {
+	background-color: #dcdcdc;
+}
+
+input[disabled] {
+	background-color: #dcdcdc;
+}
+.matches {	color: red; background-color:#FFF; }
+.matches0 {	color: #32CD32 	; }
+.matches1 {	color: #DA70D6; }
+.matches2 {	color: #FF8C00; }
+.matches3 {	color: #00FFFF; }
+.matches4 {	color: #32CD32; }
+.matches5 {	color: #8B0000; }
+.matches6 {	color: #2E8B57; }
+.matches7 {	color: #4B0082; }
+.matches8 {	color: #FF6347; }
+.matches9 {	color: #483D8B; }
+.matches10 {	color: #BDB76B; }
+
+#result {
+	overflow: auto;
+}
+
+#code {
+	color:darkblue;
+}
+
+
+
+.help dl { font-size:small; }
+.help dt { float: left; clear: left; text-align: right; font-weight: bold; color: green; }
+.help dd { margin: 0 0 0 40px;  }
+
+#myProjects {
+	margin-top: 15px;
+	font-size: .9em;
+}
+
+.mainTable {
+	width: 100%;
+	font-size: .9em;
+}
+
+.mainTable tbody tr:nth-child(odd) {
+	background-color: #EFE;
+}
+.mainTable tbody tr:nth-child(1) {
+	background-color: #DDD;
+}
+
+#regWrap {
+	font-size: .87em;
+}
+
+.clear {
+	clear:both;
+}
+
+.bad {
+	color:red;
+}
+.neutral {
+	color:blue;
+}
+.good {
+	color:green;
+}

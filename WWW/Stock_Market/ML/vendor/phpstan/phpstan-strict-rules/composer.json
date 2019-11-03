@@ -1,0 +1,47 @@
+{
+	"name": "phpstan/phpstan-strict-rules",
+	"description": "Extra strict and opinionated rules for PHPStan",
+	"type": "phpstan-extension",
+	"license": ["MIT"],
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.11-dev"
+		},
+		"phpstan": {
+			"includes": [
+				"rules.neon"
+			]
+		}
+	},
+	"require": {
+		"php": "~7.1",
+		"nikic/php-parser": "^4.0",
+		"phpstan/phpstan": "^0.11.4"
+	},
+	"require-dev": {
+		"consistence/coding-standard": "^3.0.1",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+		"jakub-onderka/php-parallel-lint": "^1.0",
+		"phing/phing": "^2.16.0",
+		"phpstan/phpstan-phpunit": "^0.11",
+		"phpunit/phpunit": "^7.0",
+		"slevomat/coding-standard": "^4.5.2"
+	},
+	"autoload": {
+		"psr-4": {
+			"PHPStan\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"classmap": ["tests/"],
+		"files": [
+			"tests/Rules/Functions/data/missing-function-parameter-typehint.php",
+			"tests/Rules/Functions/data/missing-function-return-typehint.php"
+		]
+	},
+	"config": {
+		"sort-packages": true
+	}
+}

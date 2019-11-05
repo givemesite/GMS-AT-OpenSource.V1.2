@@ -47,10 +47,13 @@
 				//map it to the amount of gain ($gain % from buy) 1 - 100 
 				$sale_pct=	round( map($drop_pct, "1", "100",   1, 100 ), 4, PHP_ROUND_HALF_DOWN );//first sales
 				
+			
 				//waight 10 - 15 %
-				$sale_pct = $sale_pct + ($sale_pct * 10.2);
+				$sale_pct = $sale_pct + ($sale_pct * 0.10);
 				//the expected loss in respect to the amount of gains 
-				$sale = "0".".".$sale_pct;
+				$sale = "0". "." .str_pad((round( $sale_pct, 0, PHP_ROUND_HALF_DOWN )), 2, '0', STR_PAD_LEFT);
+				
+				
 		$Base_Degradation_Price    = $quantitative_trade[3]       *   $sale;//1-25% losses of the buy price - ALPHA
 		$Base_Price                = $quantitative_trade[3]       -   $Base_Degradation_Price;	
 		//lost 20% of portfolio 			

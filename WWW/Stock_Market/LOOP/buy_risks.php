@@ -235,6 +235,19 @@
 	
 	}
 	
+	//need to make arduino api first
+	
+	//would like to use ai and sessions with no sql 
+	
+	//htf defalut - ALPHA
+	
+	//down trend - $DOWN_TREND == TRUE
+	
+	//low change under 3
+	
+	//stock price drop $ > (price 1 TRG $0.05) price $4)$0.20 
+	
+	
 	
 	if (
 	isset($the_price_now) &&
@@ -423,8 +436,8 @@
 			
 			
 			if (
-			
-				$pass_path_Trend >= "-10.00"	 &&
+			//- ALPHA
+				//$pass_path_Trend >= "-10.00"	 && need to fix
 				$day_trades_used <> TRUE	 &&
 				$bad_day_trade <> TRUE	 && 
 				$call_it_quits <> "N"	 && 

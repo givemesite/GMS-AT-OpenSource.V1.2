@@ -61,6 +61,8 @@
 					//$GAIN = "07";
 				}
 				
+				
+				
 				//The gain (%) is maped from the database 
 				//advarage gain compaired to the prevous day
 				//if its more then well will want to buy

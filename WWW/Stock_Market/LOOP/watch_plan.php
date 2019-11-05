@@ -285,45 +285,7 @@
 						
 						//SELECT * FROM `stock` ORDER BY `CHANGE_PCT` DESC LIMIT 1
 						
-					
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
+
 						
 						
 						
@@ -420,69 +382,7 @@
 						$_SESSION['lab_test_count'] = $lab_test_count;
 						
 															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
-															
+	
 															
 															
 															
@@ -506,6 +406,23 @@
 			
 			while ($trade=mysqli_fetch_row($main_trade_loop))
 			{
+				//- ALPHA
+				
+			//used to set the diffrence in price to the lowest price 	
+				$price_diff = $trade[4] - $trade[11];
+				if ($price_diff <> $trade[4] ){							
+		$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
+		$aquery = "UPDATE `day_trades` SET `PLAN_B_CHANGE_PCT` = '".$price_diff."' WHERE `id` = '".$trade[0]."'";
+		if ($result=mysqli_query($sub_conn,$aquery)){ 
+			// Fetch one and one row
+			while ($get_worker_row=mysqli_fetch_row($result))
+			{
+				$worker_row= $get_worker_row;
+				
+			}}
+			mysqli_close($sub_conn);usleep(200);	
+				
+				}
 				
 				
 				$model					= "";	
@@ -591,12 +508,14 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 								if ($old_advs  > $old_a){
 										//newest
 										//up trend
+										
+										$_SESSION['SYSTEM']['MSC']['PATH_TREND']= "-5";
 									if ($padv  > $old_advs){
 											//in 
 											}else{
 										//down
 										// try not to buy
-										$_SESSION['SYSTEM']['MSC']['PATH_TREND']= "-5";
+										
 									}
 									
 								}else{

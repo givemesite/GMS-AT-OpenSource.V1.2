@@ -75,9 +75,9 @@ $targets = [1.10, 0.95, 1.22, 1.20, 1.19];
 			
 			//the time the program has to think about the price changeing when it buys 
 			if ($old_advs > 4){
-		$next_cell_time = strtotime("+190 seconds");//190-220
+		$next_cell_time = strtotime("+1 seconds");//190-220
 			}else {
-				$next_cell_time = strtotime("+150 seconds");//150-200
+				$next_cell_time = strtotime("+1 seconds");//150-200
 				
 			}
 		
@@ -90,7 +90,7 @@ $targets = [1.10, 0.95, 1.22, 1.20, 1.19];
 		
 		//if we are in a sim rember each row is 1 min in a snapshot
 		}else{
-			$next_cell_time = strtotime("+5 seconds");
+			$next_cell_time = strtotime("+1 seconds");
 			
 			
 		}
@@ -142,7 +142,13 @@ if ($time_now > $last){
 	$LPI_A = $_SESSION[($Memory_9[1])]['LPI'][1]["LAST_PRICE"];
 	$LPI_B = $_SESSION[($Memory_9[1])]['LPI'][2]["LAST_PRICE"];
 	$LPI_C = $_SESSION[($Memory_9[1])]['LPI'][3]["LAST_PRICE"];
-		
+	$SPW	= $_SESSION[($Memory_9[1])]['SYSTEM']['ACTION']['SPW'];
+	
+	$calls_count = $_SESSION[($Memory_9[1])]['SYSTEM']['ACTION']['CALLS_SPW'];
+	
+	$DIP_PRICE = $_SESSION[($Memory_9[1])]['SYSTEM']['ACTION']['DIP_PRICE_SPW'];
+	
+	
 		//SET STOCKS WITH a LEVEL OF LPI 2 set TO a CW TYPE  
 		if ($LPI_B > 0.05  ){
 			$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
@@ -160,9 +166,35 @@ if ($time_now > $last){
 		IF ($LPI_C >= $LPI_B && $LPI_B > 0.05){
 			$BUY_IT = "Y";
 			
-			
+			//set price watch
+			$_SESSION[($Memory_9[1])]['SYSTEM']['ACTION']['SPW'] = "Y";
 		}
 		
+		if ($SPW == "Y"){
+			
+
+			if (!isset($DIP_PRICE)){$_SESSION[($Memory_9[1])]['SYSTEM']['ACTION']['DIP_PRICE_SPW'] = $Memory_3;}
+			
+			//look for price dip 
+			if ($LPI_C > $Memory_3  && $Memory_3 < $DIP_PRICE){
+				
+				if ($calls_count < 30){//count calls
+				
+				$_SESSION[($Memory_9[1])]['SYSTEM']['ACTION']['CALLS_SPW'] = ($calls_count +1);
+				}
+				
+				$BUY_IT = "N";
+			}
+			
+			//buy after dip
+			if ( $Memory_3 < $DIP_PRICE ){$_SESSION[($Memory_9[1])]['SYSTEM']['ACTION']['DIP_PRICE_SPW'] = $Memory_3;}
+			
+			if ( $Memory_3 > $DIP_PRICE && $calls_count > 5){$BUY_IT = "Y";}
+		}
+		else{
+			
+			$BUY_IT = "N";
+		}
 		
 			
 	if($BUY_IT == "Y"){

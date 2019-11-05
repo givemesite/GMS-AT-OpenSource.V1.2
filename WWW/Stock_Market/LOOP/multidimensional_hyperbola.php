@@ -40,7 +40,7 @@
 				//1.6 - testing for 10/2/19 - ALPHA
 				//1.3 - next test
 				//1 = defalut (basic gain)
-				$slippage = 1.6;
+				$slippage = 0.6;
 				
 				//if the adv is low
 				if($NEW_ADV < 4){

@@ -376,7 +376,8 @@
 			
 			//$time_divergence =  round( map($the_hour,    "1", "1000","1",        "1000"),1,PHP_ROUND_HALF_DOWN);
 			
-			
+							//check the amount of gains 
+				$drop_pct = abs(round(((1 - $quantitative_trade[4] / $quantitative_trade[3]) * 100), 1, PHP_ROUND_HALF_DOWN ));
 			
 			
 			
@@ -397,8 +398,8 @@
 			//but to do this you need a market index marker to wrrent
 			
 			// - ALPHA
-			$call_it_quits == 'Y' && (abs($loss_val	)) > "6.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "am"||
-			$call_it_quits == 'Y' && (abs($loss_val	)) > "4.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm"||
+			$call_it_quits == 'Y' && (abs($loss_val	)) > "6.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "am" && $over_ride_pct < 25 ||
+			$call_it_quits == 'Y' && (abs($loss_val	)) > "4.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm" && $over_ride_pct < 25 ||
 			
 			
 			

@@ -5,8 +5,8 @@
 			//if we are testing this script seen in test/12.php
 				if(!isset($sim)){
 				//used when looking at stocks to buy
-				$OLD_ADV =  $old_a;
-				$NEW_ADV = $padv;//
+				//$OLD_ADV =  $old_a;
+				//$NEW_ADV = $padv;//
 				}
 				$DOWN_TREND = null;
 				$sum_adv = $NEW_ADV - $OLD_ADV ; 
@@ -24,27 +24,28 @@
 			}
 			 //|| $over_ride_pct >=30
 			if ($DOWN_TREND ==  null){
-				$risk = 3.7; $pad=3.4;
+				$risk = 2.7; $pad=3.4;
 				$DOWN_TREND = null;
 			}
 			//die($NEW_ADV);
 			//if the new table adverage is low
 			if ($NEW_ADV < 4){
-			$time_divergence =  "-".round((map((abs($sum_adv)), 0, 30,  10 , 80)/$pad),0,PHP_ROUND_HALF_DOWN);
-			$base_divergence =  "-".round((map((abs($sum_adv)), 0, 30,  10 , 80)/$risk),0,PHP_ROUND_HALF_DOWN);
+			$time_divergence =  "-".round((map((abs($sum_adv)), 1, 20,  10 , 15)/$pad),0,PHP_ROUND_HALF_DOWN);
+			$base_divergence =  "-".round((map((abs($sum_adv)), 1, 20,  10 , 15)/$risk),0,PHP_ROUND_HALF_DOWN);
 			}else{
-			$time_divergence =  "-".round((map((abs($sum_adv)), 0, 30,  10 , 80)*$pad),0,PHP_ROUND_HALF_DOWN);
-			$base_divergence =  "-".round((map((abs($sum_adv)), 0, 30,  10 , 80)*$risk),0,PHP_ROUND_HALF_DOWN);
+			$time_divergence =  "-".round((map((abs($sum_adv)), 1, 20,  10 , 15)*$pad),0,PHP_ROUND_HALF_DOWN);
+			$base_divergence =  "-".round((map((abs($sum_adv)), 1, 20,  10 , 15)*$risk),0,PHP_ROUND_HALF_DOWN);
 			}
 			if ($NEW_ADV < 3){
-			$time_divergence =  "-".round((map((abs($sum_adv)), 0, 30,  10 , 80)/($pad*2)),0,PHP_ROUND_HALF_DOWN);
-			$base_divergence =  "-".round((map((abs($sum_adv)), 0, 30,  10 , 80)/($risk*2)),0,PHP_ROUND_HALF_DOWN);
+			$time_divergence =  "-".round((map((abs($sum_adv)), 1, 20,  10 , 15)/($pad*2)),0,PHP_ROUND_HALF_DOWN);
+			$base_divergence =  "-".round((map((abs($sum_adv)), 1, 20,  10 , 15)/($risk*2)),0,PHP_ROUND_HALF_DOWN);
 			}
 			if ($NEW_ADV < 2){
-			$time_divergence =  "-".round((map((abs($sum_adv)), 0, 30,  10 , 80)/($pad*6)),0,PHP_ROUND_HALF_DOWN);
-			$base_divergence =  "-".round((map((abs($sum_adv)), 0, 30,  10 , 80)/($risk*6)),0,PHP_ROUND_HALF_DOWN);
+			$time_divergence =  "-".round((map((abs($sum_adv)), 1, 20,  10 , 15)/($pad*6)),0,PHP_ROUND_HALF_DOWN);
+			$base_divergence =  "-".round((map((abs($sum_adv)), 1, 20,  10 , 15)/($risk*6)),0,PHP_ROUND_HALF_DOWN);
 			}
 			
+			$base_divergence = 50;
 			//sell around 9 am 
 			if ($the_hour == 9 && $the_min >=30 && $the_min<=59 && $the_ap == "am" ){
 				
@@ -53,19 +54,19 @@
 			//sell around 10 am 
 			if ($the_hour == 10 && $the_min >=1 && $the_min<=59 && $the_ap == "am" ){
 			//local change
-				$time_divergence =  "-". round( map($the_min,    "1", "59",abs($base_divergence),		  "30"),1,PHP_ROUND_HALF_DOWN);//walking the % back down helps 
+			$time_divergence =  "-". round( map($the_min,    "1", "59",abs($base_divergence),		  "30"),1,PHP_ROUND_HALF_DOWN);//walking the % back down helps 
 			}
 			
 			//sell around 10:30 am 
 			if ($the_hour == 10 && $the_min >=30 && $the_min<=59 && $the_ap == "am" ){
 			//local change
-				$time_divergence =  "-". round( map($the_min,    "30", "59","20",		  abs($base_divergence)),1,PHP_ROUND_HALF_DOWN);//walking the % back down helps 
+				$time_divergence =  "-". round( map($the_min,    "30", "59","40",		  abs($base_divergence)),1,PHP_ROUND_HALF_DOWN);//walking the % back down helps 
 			}
 			if ($DOWN_TREND == TRUE){
 			//sell around 10:30 am 
 			if ($the_hour == 10 && $the_min >=30 && $the_min<=59 && $the_ap == "am" ){
 			//local change
-				$time_divergence =  "-". round( map($the_min,    "30", "59","5",		  abs($base_divergence)),1,PHP_ROUND_HALF_DOWN);//walking the % back down helps 
+				$time_divergence =  "-". round( map($the_min,    "30", "59","40",		  abs($base_divergence)),1,PHP_ROUND_HALF_DOWN);//walking the % back down helps 
 			}
 			}
 			
@@ -75,13 +76,13 @@
 			//sell around 11:00 am 
 			if ($the_hour == 11 && $the_min >=30 && $the_min<=59 && $the_ap == "am" ){
 			//local change
-				$time_divergence =  "-". round( map($the_min,    "30", "59","20",		  abs($base_divergence)),1,PHP_ROUND_HALF_DOWN);//walking the % back down helps 
+				$time_divergence =  "-". round( map($the_min,    "30", "59","50",		  abs($base_divergence)),1,PHP_ROUND_HALF_DOWN);//walking the % back down helps 
 			}
 			if ($DOWN_TREND == TRUE){
 			//sell around 10:30 am 
 			if ($the_hour == 11 && $the_min >=30 && $the_min<=59 && $the_ap == "am" ){
 			//local change
-				$time_divergence =  "-". round( map($the_min,    "30", "59","5",		  abs($base_divergence)),1,PHP_ROUND_HALF_DOWN);//walking the % back down helps 
+				$time_divergence =  "-". round( map($the_min,    "30", "59","50",		  abs($base_divergence)),1,PHP_ROUND_HALF_DOWN);//walking the % back down helps 
 			}
 			}
 	

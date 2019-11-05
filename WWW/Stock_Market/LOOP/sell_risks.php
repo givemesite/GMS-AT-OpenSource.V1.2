@@ -51,10 +51,18 @@
 				//waight 10 - 15 %
 				$sale_pct = $sale_pct + ($sale_pct * 0.10);
 				//the expected loss in respect to the amount of gains 
-				$sale = "0". "." .str_pad((round( $sale_pct, 0, PHP_ROUND_HALF_DOWN )), 2, '0', STR_PAD_LEFT);
+				$psale = "0". "." .str_pad((round( $sale_pct, 0, PHP_ROUND_HALF_DOWN )), 2, '0', STR_PAD_LEFT);
 				
 				
-		$Base_Degradation_Price    = $quantitative_trade[3]       *   $sale;//1-25% losses of the buy price - ALPHA
+				if ($psale < 0.25 || !isset($psale)){
+					
+					$psale = 0.25;
+					
+				}
+				
+				
+				
+		$Base_Degradation_Price    = $quantitative_trade[3]       *   $psale;//1-25% losses of the buy price - ALPHA
 		$Base_Price                = $quantitative_trade[3]       -   $Base_Degradation_Price;	
 		//lost 20% of portfolio 			
 		if ($the_price_now<=$Base_Price ){	
@@ -105,7 +113,7 @@
 				'SELL', 
 				'".$qty."', 
 				'".$time."',
-				'Responder : Base Price ".$responce."',
+				'Responder ".$psale.": Base Price ".$responce."',
 				'".$the_hour."',
 				'".$the_min."', 
 				'".$the_ap."', 

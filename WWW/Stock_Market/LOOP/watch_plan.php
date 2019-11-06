@@ -96,10 +96,11 @@
 	include("$SERVER_DIR/fibonacci/seo/seo_investing_api_indexs.php");
 	
 	
-	function WATCH_STOCKS($stocks_watch_mode= null,$SERVER_DIR= null,$BACK_CALL= null,$emu= null,$sim= null,$in_loop_count= null){
-	
-	
-	
+	function WATCH_STOCKS($stocks_watch_mode= null,$SERVER_DIR= null,$BACK_CALL= null,$emu= null,$sim= null,$in_loop_count= null,  $sql_inject = null){
+	$leep_A = "20";
+	$leep_B = "50";
+	$leep_C = "100";
+	$leep_D = "200";
 	include("$SERVER_DIR/LOOP/time_base.php");
 
 	
@@ -136,7 +137,7 @@
 				$old_day      = $get_advsnum[2];
 				$old_a      = $get_advsnum[3];
 			}}
-			mysqli_close($sub_conn);usleep(200);
+			mysqli_close($sub_conn);usleep($leep_C);
 			
 			
 			
@@ -150,7 +151,7 @@
 					$table_number      = $get_num[0] + 20;
 					$table_offset      = $get_num[0] + 200;
 				}}
-				mysqli_close($sub_conn);usleep(200);
+				mysqli_close($sub_conn);usleep($leep_C);
 				
 				
 				
@@ -163,7 +164,7 @@
 						$table_count      = $get_count[0];
 						
 					}}
-					mysqli_close($sub_conn);usleep(200);
+					mysqli_close($sub_conn);usleep($leep_C);
 					
 
 						
@@ -178,7 +179,7 @@
 								$ocg      = $get_adv[0];
 								
 							}}
-							mysqli_close($sub_conn);usleep(200);
+							mysqli_close($sub_conn);usleep($leep_C);
 							
 							
 							
@@ -191,7 +192,7 @@
 									$frequency= $get_frq[0];
 									
 								}}
-								mysqli_close($sub_conn);usleep(200);
+								mysqli_close($sub_conn);usleep($leep_C);
 								
 								
 								
@@ -254,7 +255,7 @@
 					//Alpaca
 					echo "\n Alpaca Balance: ".$json_obj->buying_power;
 					if($day_trades_used <>TRUE){
-						sleep(1);
+						//sleep(1);
 					}
 					$_SESSION['BAL'] = $json_obj->buying_power;
 					//a day trade with 25K equity 
@@ -313,7 +314,7 @@
 							//"' AND `frequency` > '".$base_frq."' AND `id` < '".$table_offset."'ORDER BY `id`";
 							if ($sim["sim"]==FALSE){
 								//ORDER BY `TYPE`
-							$qquery = "SELECT * FROM `day_trades` ORDER BY `TYPE`";
+							$qquery = "SELECT * FROM `day_trades` ORDER BY `TYPE`".$sql_inject;
 							}
 							else{
 							$qquery = "SELECT * FROM `day_trades` LIMIT 5";
@@ -420,7 +421,7 @@
 				$worker_row= $get_worker_row;
 				
 			}}
-			mysqli_close($sub_conn);usleep(200);	
+			mysqli_close($sub_conn);usleep($leep_C);	
 				
 				}
 				
@@ -444,7 +445,7 @@
 				$worker_row= $get_worker_row;
 				
 			}}
-			mysqli_close($sub_conn);usleep(200);																		
+			mysqli_close($sub_conn);usleep($leep_C);																		
 							
 							
 							
@@ -470,7 +471,7 @@
 																		
 							
 							
-							
+		if (!isset(($_GET['node']))){					
 //get adverages
 $sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
 $hquery = "SELECT AVG(`OCG`) FROM `day_trades` WHERE `id` < '$table_number'"; //- ALPHA just added WHERE `id` < '$table_number' 
@@ -483,14 +484,14 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 		$padv      = $get_padv["AVG(`OCG`)"];
 		
 	}}
-	mysqli_close($sub_conn);usleep(200);
+	mysqli_close($sub_conn);usleep($leep_C);
 							
 							//print($padv);
 							
 							
 							//set new day advarages in the advs table
 							
-							usleep(600);
+							usleep($leep_C);
 							
 							$raw_old_day = $old_day+ 0;
 							
@@ -543,8 +544,8 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 										} else {
 										echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 										sleep(700);
-									}mysqli_close($sub_conn);usleep(60);
-									usleep(1000);	//set new adv in database 
+									}mysqli_close($sub_conn);usleep($leep_A);
+									usleep($leep_D);	//set new adv in database 
 								if((abs($padv)) >  0 ){			
 					
 								}else {
@@ -565,8 +566,8 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 									} else {
 									echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 									sleep(700);
-								}mysqli_close($sub_conn);usleep(60);
-								usleep(1000);
+								}mysqli_close($sub_conn);usleep($leep_A);
+								usleep($leep_D);
 								
 								
 								$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
@@ -577,12 +578,12 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 									} else {
 									echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 									sleep(700);
-								}mysqli_close($sub_conn);usleep(60);
-								usleep(1000);
+								}mysqli_close($sub_conn);usleep($leep_A);
+								usleep($leep_D);
 								
 								
 							}
-							usleep(600); 
+		}							usleep($leep_B); 
 							//	echo "\n The Price Now:".$the_price_now."\n";
 							
 				//no need to look for stocks to buy if the market is not 20 +0.50/PT up
@@ -651,7 +652,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 									$day_trades_sold = TRUE;//continue(1);
 									//ECHO"|\n\n Day Trade End Trigger........   DONE";		
 								}}
-								mysqli_close($sub_conn);usleep(60);
+								mysqli_close($sub_conn);usleep($leep_A);
 								
 								
 								
@@ -670,7 +671,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 										$day_trades_used = TRUE;//continue(1);
 										//ECHO"|\n\n Day Trade End Trigger........   DONE";		
 									}}
-									mysqli_close($sub_conn);usleep(60);
+									mysqli_close($sub_conn);usleep($leep_A);
 									//re cast the vars
 									
 									$quantitative_trade = null;			
@@ -686,7 +687,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 											
 										}}			
 										
-										mysqli_close($sub_conn);usleep(60);			
+										mysqli_close($sub_conn);usleep($leep_A);			
 										
 										//make a call to alphavantage to get a price of the stock we are looking at 
 										//get price for
@@ -698,7 +699,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 											$call_type=null;
 											
 											if (!isset($sim)){
-												usleep(100); //1100 - 1300	
+												usleep($leep_B); //1100 - 1300	
 												
 											}
 												
@@ -905,7 +906,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 									$result = json_decode($server_output);
 									
 									if (isset($result->{'Note'})){echo "\n".$result->{'Note'}."\n";
-										sleep(4);
+									//	sleep(4);
 									}
 									
 									
@@ -1047,7 +1048,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 								
 							
 								}
-								usleep(300);
+								usleep($leep_B);
 								
 				}
 				//mysqli_close($conn);	

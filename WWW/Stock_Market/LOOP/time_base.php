@@ -2,7 +2,7 @@
 	
 		//get the index for the day
 		session_start();
-		if (!isset($sim)){
+		if (!isset($sim) && (!isset(($_GET['node'] )))){
 			INDEXS_FOR_INVESTING  () ;
 			}else{ 
 			$simulate_i_adv = rand(-15, 25);

@@ -62,7 +62,7 @@
 				
 				
 				
-		$Base_Degradation_Price    = $quantitative_trade[3]       *   $psale;//1-25% losses of the buy price - ALPHA
+		$Base_Degradation_Price    = $quantitative_trade[3]       *   0.15;//1-25% losses of the buy price - ALPHA
 		$Base_Price                = $quantitative_trade[3]       -   $Base_Degradation_Price;	
 		//lost 20% of portfolio 			
 		if ($the_price_now<=$Base_Price ){	
@@ -85,7 +85,7 @@
 				else{
 					
 					if (isset($sim)){
-						sleep('2');
+					//	sleep('2');
 					}
 					//$price    = round(($the_price_now + ($the_price_now * 0.04)),4, PHP_ROUND_HALF_DOWN);
 					$price    = round(($the_price_now ),4, PHP_ROUND_HALF_UP);
@@ -113,7 +113,7 @@
 				'SELL', 
 				'".$qty."', 
 				'".$time."',
-				'Responder ".$psale.": Base Price ".$responce."',
+				'Responder ".$Base_Price .": Base Price ".$responce."',
 				'".$the_hour."',
 				'".$the_min."', 
 				'".$the_ap."', 
@@ -347,7 +347,7 @@
 			
 			
 			if (isset($sim)){
-				sleep('2');
+			//	sleep('2');
 			}
 			
 			//this might get a user stuck in a trade
@@ -398,8 +398,8 @@
 			//but to do this you need a market index marker to wrrent
 			
 			// - ALPHA
-			$call_it_quits == 'Y' && (abs($loss_val	)) > "6.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "am" && $over_ride_pct < 25 ||
-			$call_it_quits == 'Y' && (abs($loss_val	)) > "4.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm" && $over_ride_pct < 25 ||
+			$call_it_quits == 'Y' && (abs($loss_val	)) > "3.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "am" && $over_ride_pct < 25 ||
+			$call_it_quits == 'Y' && (abs($loss_val	)) > "2.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm" && $over_ride_pct < 25 ||
 			
 			
 			

@@ -90,7 +90,7 @@ $targets = [1.10, 0.95, 1.22, 1.20, 1.19];
 		
 		//if we are in a sim rember each row is 1 min in a snapshot
 		}else{
-			$next_cell_time = strtotime("+1 seconds");
+			$next_cell_time = strtotime("+0 seconds");
 			
 			
 		}
@@ -399,7 +399,7 @@ $targets = [1.10, 0.95, 1.22, 1.20, 1.19];
 		
 		//if we are in a sim rember each row is 1 min in a snapshot
 		}else{
-			$next_cell_time = strtotime("+1 seconds");
+			$next_cell_time = strtotime("+0 seconds");
 			
 			
 		}

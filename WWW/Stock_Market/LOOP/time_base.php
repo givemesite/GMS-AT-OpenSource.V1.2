@@ -189,13 +189,15 @@
 				}
 				
 				
+				
+				//wont delete on weekends for debugging - 11/24/19
 				//delete old data in tables 
 				//stocks
 				//day_tradess
 				//when time is > 9:25am
 				
 				//this will delete the old  stuff in the database		
-				if ($the_ap == "am" && "9" == $the_hour && $the_min < "31" && $the_min >= "25" && !isset($sim)){
+				if ($the_ap == "am" && "9" == $the_hour && $the_min < "31" && $the_min >= "25" && !isset($sim) && $the_day_symbl <> "Sat" && $the_day_symbl <> "Sun"){
 					
 					
 					$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
@@ -227,7 +229,7 @@
 				$index_adv = $_SESSION['INDEXS_ADV'];
 				echo "\n INDEX'S AVERAGE :".round(($index_adv/8),0,PHP_ROUND_HALF_UP)."\n";
 				
-				echo "\n\033[4;37mAUTO TRADE\033[0m";echo "	\n";
+			if (!isset(($_GET['node']))){	echo "\n\033[4;37mAUTO TRADE\033[0m";echo "	\n";}
 				echo "-------------------------------------------------------------------------------\n";
 				//dont trade by default		
 				$call_trade_bypass  = TRUE;		
@@ -363,7 +365,8 @@
 					
 					if ($day_trades_used <> TRUE)
 					{echo "\n\n	Auto day trading is running \n\n";}
-					else{echo "\n\n	Auto day trading is off \n\n";sleep(4);}
+					else{echo "\n\n	Auto day trading is off \n\n";//sleep(1);
+					}
 					
 					$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
 					//see if we have done a day trade today

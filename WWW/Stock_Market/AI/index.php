@@ -33,7 +33,7 @@ $LAST_MIN	= null,	// null
 $Model		= null, // buying / selling 
 $sim        = null
 ){
-		$servername         = "127.0.0.1";
+		$servername         = $_SESSION['IP_X_server_ip'];
 		$username           = "root";
 		$dbname             = "stock_market_local";
 		$password           = "";
@@ -340,7 +340,7 @@ $LAST_MIN	= null,	// null
 $Model		= null, // buying / selling 
 $sim        = null
 ){
-		$servername         = "127.0.0.1";
+		$servername         = $_SESSION['IP_X_server_ip'];
 		$username           = "root";
 		$dbname             = "stock_market_local";
 		$password           = "";

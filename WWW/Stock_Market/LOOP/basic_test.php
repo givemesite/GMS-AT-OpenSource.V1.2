@@ -15,7 +15,7 @@ $time = time();
 
 	
 //some stuff for mysql data base
-$servername         = "127.0.0.1";
+$servername         = $_SESSION['IP_X_server_ip'];
 $username           = "root";
 $dbname             = "stock_market_local";
 $password           = "";

@@ -96,14 +96,118 @@
 	include("$SERVER_DIR/fibonacci/seo/seo_investing_api_indexs.php");
 	
 	
-	function WATCH_STOCKS($stocks_watch_mode= null,$SERVER_DIR= null,$BACK_CALL= null,$emu= null,$sim= null,$in_loop_count= null,  $sql_inject = null){
-	$leep_A = "20";
-	$leep_B = "50";
-	$leep_C = "100";
-	$leep_D = "200";
+	function WATCH_STOCKS($stocks_watch_mode= null,$SERVER_DIR= null,$BACK_CALL= null,$emu= null,$sim= null,$in_loop_count= null,  $sql_inject = null, $Z_pre_sql_inject = null){
+	$leep_A = "10";
+	$leep_B = "20";
+	$leep_C = "50";
+	$leep_D = "100";
 	include("$SERVER_DIR/LOOP/time_base.php");
 
+	//get node id 
+	$node_id = $_GET['node'];
+		if (isset($node_id)){
 	
+	$file  = "C:/php/www/Stock_Market/API/temp/AI-NODE-".$node_id .".PLH"; // I was running the code on localhost, and hence the path!
+	if (isset($node_id)){
+		if ((file_exists (  $file ))== FALSE){
+		
+		fopen($file, "w");
+	}
+	}
+	// WHERE `id` = '1'
+		$RW_QLOOK = $_GET['RW_LOOK'];
+		
+		if ($RW_QLOOK == "TRUE"){
+			
+	
+					$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
+						$cquery = "SELECT COUNT(*) FROM `day_trades`";
+						if ($fresult=mysqli_query($sub_conn,$cquery)){ 
+							// Fetch one and one row
+							while ($get_adv=mysqli_fetch_row($fresult))
+							{
+								$count      = $get_adv[0];
+								
+							}}
+							mysqli_close($sub_conn);usleep(60);
+
+							$last 			= file_get_contents($file);	
+							
+							
+		if ($last <1 || $last == ""){
+				file_put_contents($file, $count);	
+			
+				$sql_inject = " LIMIT 5";
+				
+				
+			
+					
+			
+				
+
+			
+		}else{
+		
+				$pre_sql_inject = " WHERE `id` = '".$last."'";
+			$next_cell = $last - "1";
+				file_put_contents($file, $next_cell);sleep (1);	
+			$sql_inject = " LIMIT 5";
+		}
+			
+		
+		}else{
+
+		$last 			= file_get_contents($file);	
+		
+		if (isset($last)){
+			
+			if ($last < 1){
+				file_put_contents($file, "1");
+					$sql_inject = " LIMIT 5";
+			}else {
+			$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
+						$cquery = "SELECT COUNT(*) FROM `day_trades`";
+						if ($fresult=mysqli_query($sub_conn,$cquery)){ 
+							// Fetch one and one row
+							while ($get_adv=mysqli_fetch_row($fresult))
+							{
+								$count      = $get_adv[0];
+								
+							}}
+							mysqli_close($sub_conn);usleep(60);
+			if ($last  > $count){
+				
+				
+					file_put_contents($file, "1");	
+					
+				
+				
+			}else{
+				
+				
+				$next_cell = $last + 1;
+				
+				file_put_contents($file, $next_cell);	
+					
+				$pre_sql_inject = " WHERE `id` = '".$last."'";
+			}
+			
+
+			}
+			
+		}else{$sql_inject = " LIMIT 5";}
+		
+		}
+
+		
+		}
+		
+if (isset(($_GET['node']))){
+//	echo $pre_sql_inject;
+		//keep a look at all the stocks 
+		$sql_inject = " LIMIT 5";
+		
+}
 	
 	
 	
@@ -246,7 +350,7 @@
 				
 					
 					
-					echo "\n\033[4;37mTable Adv\033[0m";echo "	\n";
+					if (!isset(($_GET['node']))){echo "\n\033[4;37mTable Adv\033[0m";echo "	\n";}
 					echo "-------------------------------------------------------------------------------\n";
 					echo"\n AVD / PADV: ".$old_advs."/".$old_a." GAIN: ".$GAIN_Percent." OCG".$base_ocg . " FRQ". $base_frq . " ILC".$in_loop_count. "   COUNT". $base_count ."\n";//sleep(3);
 					//reaction
@@ -257,6 +361,8 @@
 					if($day_trades_used <>TRUE){
 						//sleep(1);
 					}
+					
+					
 					$_SESSION['BAL'] = $json_obj->buying_power;
 					//a day trade with 25K equity 
 					$gain= (round(($ocg),0,PHP_ROUND_HALF_DOWN));
@@ -268,7 +374,7 @@
 					"' AND `frequency` < '".(round(($frequency),0,PHP_ROUND_HALF_DOWN))."' ORDER BY `VOL` DESC LIMIT 200";
 					
 					
-					
+					if ( ($json_obj->daytrade_count) < 3){
 					//need to code a responce catch here 
 					//Error in query (2006): MySQL server has gone away
 					
@@ -294,7 +400,7 @@
 						
 						
 						$model					= "";	
-						
+					//	if (isset($_GET['node'])){			$qquery = "SELECT * FROM `day_trades`".$pre_sql_inject." ORDER BY `TYPE`".$sql_inject ;}
 						//even	
 						if ($in_loop_count % 2 == 0){
 							
@@ -312,47 +418,50 @@
 							
 							//$qquery = "SELECT * FROM `day_trades` WHERE CONVERT(`OCG` USING utf8mb4) > '".$base_ocg.
 							//"' AND `frequency` > '".$base_frq."' AND `id` < '".$table_offset."'ORDER BY `id`";
+
+							
+							
+							
+							
+							}else{//here is where i test other odd trading ideas
+								if (isset($sql_inject)){}else{$sql_inject = " LIMIT 500";}
+							//basic trade reaction
+									if ($lab_test_count == '1' ){ 
+							$xmodel = "MODEL: A Sort";
 							if ($sim["sim"]==FALSE){
 								//ORDER BY `TYPE`
-							$qquery = "SELECT * FROM `day_trades` ORDER BY `TYPE`".$sql_inject;
+							$qquery = "SELECT * FROM `day_trades`".$pre_sql_inject." ORDER BY `TYPE`".$sql_inject ;
 							}
 							else{
-							$qquery = "SELECT * FROM `day_trades` LIMIT 5";
+							$qquery = "SELECT * FROM `day_trades` LIMIT 150";
 							}
 							
-							
-							
-							$xmodel = "MODEL: A Sort";
-							}else{//here is where i test other odd trading ideas
-							
-							//basic trade reaction
-							if ($lab_test_count == '1' ){ 
-								//test low risk - large gains
-								//$qquery = "SELECT * FROM `day_trades` WHERE `frequency` > '3' AND `VOL` > '500' ORDER BY `VOL` LIMIT 50";
-								//$model = "MODEL: VOL";
 							}
 							//high - risk & exposure
 							if ($lab_test_count == '3' ){
-								//	$qquery = "SELECT * FROM `day_trades` WHERE CONVERT(`OCG` USING utf8mb4) > '".$base_ocg.
-								//	"' AND `frequency` > '".$base_frq."' ORDER BY `OCG` DESC LIMIT 50";
-								//$model = "MODEL: OC GAIN";
+								$qquery = "SELECT * FROM `day_trades` ORDER BY `VOL` DESC LIMIT 50";
+								
+							
+								$xmodel = "MODEL: OC VOL";
+							}
+							if ($lab_test_count == '5' ){
+								$qquery = "SELECT * FROM `day_trades` ORDER BY `OCG` DESC LIMIT 50";
+						
+								$xmodel = "MODEL: OC GAIN";
 							}		
 							
 							//high - risk & exposure
-							if ($lab_test_count == '5' ){
-								
-								//$qquery = "SELECT * FROM `day_trades` WHERE CONVERT(`OCG` USING utf8mb4) > '".$base_ocg.
-								//"' AND `frequency` > '".$base_frq."' AND CONVERT(`5DT` USING utf8mb4) > '".$a[0]."' ORDER BY `frequency` LIMIT 50";
-								//$model = "MODEL: FREQ";
+							if ($lab_test_count == '6' ){
+								$qquery = "SELECT * FROM `day_trades` ORDER BY `PLAN_B_CHANGE_PCT` DESC LIMIT 50";
+								$xmodel = "MODEL: LOSS";
 							}		
 						}
-						//SELECT *
-						//FROM `day_trades` 
-						//WHERE `PLAN_A_CHANGE_PCT` > '0.0001'
-						//ORDER BY `PLAN_A_CHANGE_PCT` < `PRICE`
-						//LIMIT 50
+			
 						
-							}
+	}
+	}
+	
+	else {	echo "\n Automated PDT HALT! \n";}
 						
 						//SELECT * FROM `stock` ORDER BY `CHANGE_PCT` DESC LIMIT 1
 						
@@ -375,7 +484,7 @@
 							//	$qquery = "SELECT * FROM `day_trades` WHERE `trading_name` = '".$mount_trade[1]."' LIMIT 1";
 						}
 						
-						if ($lab_test_count > '1' ){
+						if ($lab_test_count > '6' ){
 							$_SESSION['lab_test_count']= '0';
 							$lab_test_count = 0;
 						}
@@ -387,7 +496,7 @@
 															
 															
 															
-															
+							//print_r( $qquery);								
 															
 															
 	$RUN_LIVE = null;
@@ -471,7 +580,7 @@
 																		
 							
 							
-		if (!isset(($_GET['node']))){					
+		if (!isset(($_GET['node']))||isset(($_GET['node']))){					
 //get adverages
 $sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
 $hquery = "SELECT AVG(`OCG`) FROM `day_trades` WHERE `id` < '$table_number'"; //- ALPHA just added WHERE `id` < '$table_number' 
@@ -1026,7 +1135,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 										
 									
 									// $model .
-									$model .= " $xmodel (GAIN : $GAIN_Percent  TIMESTAMP :".$atime_date[1]." FREQ : $FREQ  Adverages :$old_advs $old_a )" ;
+									$model .= " $xmodel (GAIN : $GAIN_Percent  TIMESTAMP :".$atime_date[1]." FREQ : $FREQ  Adverages :$old_advs $old_a COUNT:". $base_count .")" ;
 									
 									
 									

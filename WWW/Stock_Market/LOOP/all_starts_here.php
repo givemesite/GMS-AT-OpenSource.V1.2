@@ -524,7 +524,7 @@
 			
 			
 			if (
-			$CHANGE_PCT   <= "100"         &&//- ALPHA
+			$CHANGE_PCT   <= "90"         &&//- ALPHA
 			$Change_result>$moving_average &&
 			
 			$Change_result > 0 && 

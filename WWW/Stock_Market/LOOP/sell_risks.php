@@ -15,7 +15,7 @@
 	
 	//$stock_Degradation_Percent = $trade[] / $Degradation_Percent;
 	//                           //buy price
-	
+	$Call_SELLING = null;
 	$oldFigure       = $trade[4];
 	$newFigure       = $the_price_now;
 	
@@ -32,8 +32,13 @@
 	
 	
 	
-	if ( $quantitative_trade[1] == $trade[1] && $the_price_now < $quantitative_trade[5] && $the_price_now <> '' && isset ($the_price_now )){
-		//16% didnt work 7/20/19 so i moved it to 20
+	if ( $quantitative_trade[1] == $trade[1] && $the_price_now < $quantitative_trade[5] && $the_price_now <> '' && isset ($the_price_now ) ||
+		$the_hour == 3 && $the_min > 49 && $the_min < 59 && $the_ap=="pm" //catch all to sell off stock by the end of the day 
+	
+	
+	
+	){
+
 		//23 didnt work 9/17
 		//25 should work 50 is to much 
 				$order_type="sell";
@@ -65,8 +70,11 @@
 		$Base_Degradation_Price    = $quantitative_trade[3]       *   0.15;//1-25% losses of the buy price - ALPHA
 		$Base_Price                = $quantitative_trade[3]       -   $Base_Degradation_Price;	
 		//lost 20% of portfolio 			
-		if ($the_price_now<=$Base_Price ){	
-			
+		if ($the_price_now<=$Base_Price ||
+		$the_hour == 3 && $the_min > 49 && $the_min < 59 && $the_ap=="pm" 
+		
+		){	
+			$Call_SELLING = TRUE;
 			
 			
 			if ($day_trades_sold<>TRUE){
@@ -230,7 +238,7 @@
 			
 			
 			//
-			$over_ride_pct = round(((1 - $quantitative_trade[3] / $quantitative_trade[5]) * 100), 1, PHP_ROUND_HALF_DOWN );
+			$over_ride_pct = round(((1 - $quantitative_trade[5] / $quantitative_trade[3]) * 100), 1, PHP_ROUND_HALF_DOWN );
 			//
 			$loss_val = round(((1 - $quantitative_trade[5] / $quantitative_trade[4]) * 100), 1, PHP_ROUND_HALF_DOWN );
 			include("$SERVER_DIR/LOOP/degradation.php");
@@ -378,7 +386,20 @@
 			
 							//check the amount of gains 
 				$drop_pct = abs(round(((1 - $quantitative_trade[4] / $quantitative_trade[3]) * 100), 1, PHP_ROUND_HALF_DOWN ));
+				//$gain_pct = abs(round(((1 - $quantitative_trade[5] / $quantitative_trade[3]) * 100), 1, PHP_ROUND_HALF_DOWN ));
 			
+			
+			//echo "Over RW %: $over_ride_pct LOSS: $loss_val"; sleep(4);
+			
+			$drop_base_advs = round((abs(($padv - $old_a))), 0, PHP_ROUND_HALF_UP );
+			if( $drop_base_advs <  5 ){	
+				if ($padv < $old_a){
+					$base_multi_plex = round((3 * ($drop_base_advs + 1)), 0, PHP_ROUND_HALF_DOWN );
+					
+				}
+				else{$base_multi_plex = 3;}
+			}
+			else{$base_multi_plex = 3;}
 			
 			
 			if (
@@ -398,10 +419,14 @@
 			//but to do this you need a market index marker to wrrent
 			
 			// - ALPHA
-			$call_it_quits == 'Y' && (abs($loss_val	)) > "3.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "am" && $over_ride_pct < 25 ||
-			$call_it_quits == 'Y' && (abs($loss_val	)) > "2.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm" && $over_ride_pct < 25 ||
+			 (abs($loss_val	)) > "3.0" && $the_ap == "am" && (abs($over_ride_pct)) < 20||
+			$call_it_quits == 'Y' && (abs($loss_val	)) > "2.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm"  && (abs($over_ride_pct)) < 20||
 			
-			
+			$call_it_quits == 'Y' && (abs($loss_val	)) > "40.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "am" && (abs($over_ride_pct)) < 50||
+			$call_it_quits == 'Y' && (abs($loss_val	)) > "35.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm" && (abs($over_ride_pct)) < 50||			
+
+			$call_it_quits == 'Y' && (abs($loss_val	)) > "50.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "am" && (abs($over_ride_pct)) > 100||
+			$call_it_quits == 'Y' && (abs($loss_val	)) > "45.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm" && (abs($over_ride_pct)) > 100||
 			
 			//the time divergence scripts are used for loss above 6%
 			( abs($time_divergence))			 >=		"6.0" && 
@@ -420,7 +445,7 @@
 			
 			//gains under loss
 			//$loss_val		  <=  $loss_freq  && $stock_was_bught <> null && $loss_val <> "" && isset($loss_val) ||
-			$the_hour == 3 && $the_min > 30 && $the_min < 59   //catch all to sell off stock by the end of the day 
+				$the_hour == 3 && $the_min > 49 && $the_min < 59 && $the_ap=="pm" && $Call_SELLING <> TRUE //catch all to sell off stock by the end of the day 
 			//	$the_price_now    <=  $MPA_loss   && $stock_was_bught <> null
 			
 			){	

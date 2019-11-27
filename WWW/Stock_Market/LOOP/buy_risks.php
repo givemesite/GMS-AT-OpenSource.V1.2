@@ -502,6 +502,27 @@
 						$price_bught = round(($the_price_now + ( ($the_price_now) * $DEFF_BUFFER)), 4, PHP_ROUND_HALF_UP );
 					}
 				}
+				
+				//get the daytrade data and throw it into a array for debugging 
+							ob_start();
+
+							(var_dump($trade));
+
+							$out = ob_get_clean();
+							$out = strtolower($out);
+							$out  = json_encode($out);
+							//var_dump($out);
+							
+							
+							$dump = get_defined_vars();
+						//ob_start();
+						$Dump_out  = json_encode($dump);
+						//(var_dump($dump));
+
+						//$Dump_out = ob_get_clean();
+						//$Dump_out = strtolower($Dump_out);
+						//$Dump_out  = json_encode($Dump_out);
+													
 				//to fix if a order is rejected $0 returned price  
 				if ($price_bught <> 0 ){
 					$time= time ();
@@ -525,7 +546,7 @@
 					'BUY', 
 					'".$STOCK_QTY_I_CAN_BUY."', 
 					'".$time."',
-					'".$model . "    ".$responce."',
+					'".$model . "     ".$responce."     ". $Dump_out ."     ".$out."',
 					'".$the_hour."',
 					'".$the_min."', 
 					'".$the_ap."', 

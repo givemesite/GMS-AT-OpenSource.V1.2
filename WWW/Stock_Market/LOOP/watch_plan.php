@@ -516,6 +516,11 @@ if (isset(($_GET['node']))){
 			
 			while ($trade=mysqli_fetch_row($main_trade_loop))
 			{
+				//This will break the loop after the system puts out a buy order
+				$sessionCarrier = $_SESSION['LOOPBREAK'];
+				if ($sessionCarrier == 1){$_SESSION['LOOPBREAK']=0;break;}
+				
+				
 				//- ALPHA
 				
 			//used to set the diffrence in price to the lowest price 	
@@ -803,6 +808,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 										//OC open call
 										//CW call watch
 										//CS call sale
+									//	echo "HERE";
 										if ($trade[7]=='CS'||$trade[7]=='CB'||$trade[7]=='CW'||$trade[7]=='OC'){
 											$symbol = $trade[1];
 											$call_type=null;
@@ -878,6 +884,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 					
 					$api_key = file_get_contents($key_file);
 					$array_count = 0;
+				
 					$trend_glob = null;
 					$ch = curl_init();
 					curl_setopt($ch,
@@ -891,6 +898,11 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 					if (isset($result->{'Note'})){echo "\n".$result->{'Note'}."\n";}
 					
 					$glob = $result->{'Time Series (1min)'};
+					
+					//count data points 
+					
+			
+					
 					
 					foreach ($glob as $date_stamp => $node_glob){
 						//fix abnormal data 
@@ -911,7 +923,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 									$trend_glob = $node_glob;
 								}
 								//print_r($node_glob);
-								if ($array_count >400){break;}
+								if ($array_count >$dataPoints){break;}
 							}
 							else
 							{
@@ -1021,6 +1033,9 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 									
 									$glob = $result->{'Time Series (1min)'};
 									
+						
+									
+									
 									//counts the data in the dataset for today
 									foreach ($glob as $test => $old_data_not_used_in_this){
 										$time_date  = explode(" ", $test);
@@ -1045,7 +1060,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 										//used to simulate stock data
 										if ($sim["sim"]==TRUE){
 											
-											$map_bid =  round( map(($sim["slot"]), "1", "400","1"  , $item_count), 0, PHP_ROUND_HALF_DOWN ); 
+											$map_bid =  round( map(($sim["slot"]), "1", $item_count,"1"  , $item_count), 0, PHP_ROUND_HALF_DOWN ); 
 											if ($adate_stamp[2]==$the_day ){
 												if ($map_bid==$array_count){
 													$trend_glob = $node_glob;
@@ -1078,7 +1093,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 									
 									
 									if ($sim["sim"]==TRUE){
-										echo "\n";
+									//	echo "\n";
 										//echo "Sediment Time: FRAME ($the_mon   $the_day   $the_year $the_hour $the_min //$the_ap )  CALLED ( \n";
 										//print_r($atime_date); echo " ) \n";
 										//sleep(3);
@@ -1137,7 +1152,19 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 									// $model .
 									$model .= " $xmodel (GAIN : $GAIN_Percent  TIMESTAMP :".$atime_date[1]." FREQ : $FREQ  Adverages :$old_advs $old_a COUNT:". $base_count .")" ;
 									
+									//set data points in php - ml for price bits
 									
+									$sample_test = $_SESSION['ML_Training'][($trade[1])];
+									if ($sample_test==""){
+										
+									$Sample_array = array( $GAIN_Percent  , $FREQ  ,$old_advs ,$old_a , $base_count );	
+						
+									
+									$_SESSION['ML_Training'][($trade[1])] = $Sample_array;
+									
+									
+									}
+																		
 									
 									//if we dont have price data
 									//	if (!isset($the_price_now))
@@ -1146,6 +1173,9 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 										//echo $the_price_now;
 										include("c:/php/WWW/Stock_Market/LOOP/sell_risks.php");
 										include("c:/php/WWW/Stock_Market/LOOP/buy_risks.php");																						
+									
+
+									
 									
 									if(isset($trend_glob)){
 
@@ -1166,5 +1196,5 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 	}
 	mysqli_close($loop_sub_conn);
 }
-
+//sleep(10000000000);
 }

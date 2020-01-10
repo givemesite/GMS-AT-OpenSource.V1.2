@@ -128,9 +128,9 @@
 				$what_i_do = "Ill sell it";
 				
 			}else {	$what_i_do = "Ill keep it";}
-			echo "\n gain pct $over_ride_pct %\n";
-			echo "Loss is $loss_val \n";
-			echo "Time Divergence At $the_hour:$the_min:$the_ap is ".$time_divergence. " ". $what_i_do;
-			echo "\n";
+			//echo "\n gain pct $over_ride_pct %\n";
+			//echo "Loss is $loss_val \n";
+			//echo "Time Divergence At $the_hour:$the_min:$the_ap is ".$time_divergence. " ". $what_i_do;
+			//echo "\n";
 			
 			

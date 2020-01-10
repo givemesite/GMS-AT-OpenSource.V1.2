@@ -235,6 +235,7 @@
 				$call_trade_bypass  = TRUE;		
 				//buy plan	 -  time a 	
 				if ($the_ap == "am" && $freq_time[0] 	== $the_hour ||
+				$the_ap == "am" &&		  $the_hour == "9" 	 ||
 					$the_ap == "am" &&		  $the_hour == "10" 	 ||
 					$the_ap == "am" &&		  $the_hour == "11" 	 ||
 					$the_ap == "pm" &&  	  $the_hour == "12"
@@ -397,7 +398,7 @@
 							{$quantitative_trade=$call_quantitative_trade;
 								$_SESSION['QTY']= $quantitative_trade[7];
 								if ($day_trades_sold <> TRUE){
-									ECHO"\nONE TRADE IN PROGRESS.";	print_r($call_quantitative_trade);		
+									ECHO"\nONE TRADE IN PROGRESS.";	//print_r($call_quantitative_trade);		
 									
 								}
 								$day_trades_used = TRUE;//continue(1);

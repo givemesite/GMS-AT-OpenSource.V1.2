@@ -72,6 +72,11 @@
 				}
 				
 				
+				
+				//slope indicator 
+				//this will allow more trades 
+				$SLOPE_INDC = 50; //50-99 = 50 best results - 99 for conservatist 
+				
 				//UP TREND
 
 				//starts the up slope after 9am
@@ -81,7 +86,7 @@
 				
 				//starts the up slope after 10am	
 				if ($the_hour == 10 && $the_min <= 59 && $the_min >= 0 && $DOWN_TREND == NULL){
-					$GAIN = str_pad((round(map($the_min, 1, 59,   $POS_GAIN, 99),0,PHP_ROUND_HALF_UP)), 2, '0', STR_PAD_LEFT);
+					$GAIN = str_pad((round(map($the_min, 1, 59,   $POS_GAIN, $SLOPE_INDC),0,PHP_ROUND_HALF_UP)), 2, '0', STR_PAD_LEFT);
 				}
 				
 				//starts the up slope after 9am
@@ -91,7 +96,7 @@
 				
 				//starts the up slope after 10am	
 				if ($the_hour == 10 && $the_min <= 59 && $the_min >= 0 && $DOWN_TREND == TRUE){
-					$GAIN = str_pad((round(map($the_min, 1, 59,  $POS_GAIN , 99),0,PHP_ROUND_HALF_UP)), 2, '0', STR_PAD_LEFT);
+					$GAIN = str_pad((round(map($the_min, 1, 59,  $POS_GAIN , $SLOPE_INDC),0,PHP_ROUND_HALF_UP)), 2, '0', STR_PAD_LEFT);
 				}
 				
 				if ($the_hour == 10 && $the_min <= 59 && $the_min >= 47  && $DOWN_TREND == TRUE){
@@ -115,4 +120,8 @@
 					$GAIN  = 90;
 				}
 				//$GAIN = "02";
-				$GAIN_Percent ="0.". $GAIN;
+				//print((str_pad((round(($GAIN*0.50),0,PHP_ROUND_HALF_DOWN)), 2, '0', STR_PAD_LEFT)));
+				$GAIN_Percent = abs(("0.". ((str_pad((round(($GAIN*0.50),0,PHP_ROUND_HALF_DOWN)), 2, '0', STR_PAD_LEFT)))));
+				if($GAIN_Percent< 0.08){$GAIN_Percent = "0.08";}
+				
+				//$GAIN_Percent ="0.". $GAIN;

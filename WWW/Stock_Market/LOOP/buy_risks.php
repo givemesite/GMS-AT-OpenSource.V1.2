@@ -27,7 +27,9 @@
 	
 	
 	//set the start time, if this is not set it wont buy a stock
-	if ($the_hr == 9 && $the_min < 59 && $the_min > 31 && $call_min == ''){
+	if ($the_hr == 9 && $the_min < 59 && $the_min > 31 
+	//&& $call_min == ''
+	){
 		$_SESSION['CL_Start_time'] = $the_min;
 		
 	}
@@ -220,7 +222,7 @@
 	
 	$price_to_buy_at = round(map($trade[12], $MIN_STOCK_PRICE, $MAX_STOCK_PRICE, $low_threshold , $high_threshold),4,PHP_ROUND_HALF_UP);
 	
-	echo "\n Trade Watch ".substr($trade[2],0,17) . " 	Price ".$trade[4] ." "  .$price_to_buy_at. "	".$the_price_now ." FREQ Histogram :"." ".$trade[9]." \n";
+	echo "\n Trade Watch ".substr($trade[2],0,17) . " 	Price ".$trade[4] ." "  .$price_to_buy_at. "	".$the_price_now ." FREQ Histogram :"." ".$trade[9]." ";
 	
 	//echo "\n proxy_Degradation ". $proxy_Degradation."\n";
 	//echo "\n Degradation_Percent ". $Degradation_Percent."\n";
@@ -375,7 +377,20 @@
 			
 			session_start();
 			$index_adv = $_SESSION['INDEXS_ADV'];
-			echo "\n Trade Watch ".substr($trade[2],0,17) . " 	Price ".$trade[4] ." "  .$price_to_buy_at. "	".$the_price_now ." FREQ Histogram :"." ".$trade[9]." \n";
+			echo "\n \n\033[1;33m Trade Watch ".substr($trade[2],0,17) . " 	Price ".$trade[4] ." "  .$price_to_buy_at. "	".$the_price_now ." FREQ Histogram :"." ".$trade[9]." \033[0m \n";
+			
+//AI is just used to help buying its not used for selling at the moment but this will change in 2020
+			
+			$traning_sample = array($trade[12],$trade[4],$quantitative_trade[3],$quantitative_trade[4],$quantitative_trade[5]);
+			
+			$_SESSION['ML_Training'][($trade[1])]["BTarget"] = $traning_sample;
+			
+			
+			 $target_bias = $trade[4] - ($trade[4]* (0.20));
+			$_SESSION['ML_Training'][($trade[1])]["Target"] = $trade[4];
+
+
+			
 			$INDXADV = round(($index_adv/8),0,PHP_ROUND_HALF_UP);
 		//cell       //tag
  AI ( ($trade[1]), ($trade[1]."-".
@@ -405,7 +420,7 @@
 			
 			$market_map =     round( map($INDXADV,    "-15", "1","6",    "1"),0,PHP_ROUND_HALF_DOWN);// 10-2, 8-4, 6-1
 			
-			echo "\n Market Map: $market_map\n";
+			echo " \n\033[1;33m Market Map: $market_map  \033[0m\n";
 			if(isset($sim)){
 				//sleep(10);
 			}
@@ -431,7 +446,7 @@
 			
 			//- ALPHA
 			$pass_path_Trend = ($_SESSION['SYSTEM']['MSC']['PATH_TREND']) + ($INDXADV * $INDXADV);
-			
+			//used with the ai system
 			$call_it_quits = $_SESSION[($trade[1])]['SYSTEM']['ACTION']['CTQ'];
 			
 			
@@ -506,12 +521,12 @@
 				//get the daytrade data and throw it into a array for debugging 
 							ob_start();
 
-							(var_dump($trade));
+							//(var_dump($trade));
 
 							$out = ob_get_clean();
 							$out = strtolower($out);
 							$out  = json_encode($out);
-							//var_dump($out);
+							var_dump($out);
 							
 							
 							$dump = get_defined_vars();
@@ -568,7 +583,7 @@
 					
 					$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
 					if (mysqli_query($sub_conn, $sql)) {
-						echo "New record created successfully \n";
+						echo "\n\033[1;32m New record created successfully \033[0m \n";
 						} else {
 						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}	usleep(1000);
@@ -581,6 +596,16 @@
 					
 					if (mysqli_query($sub_conn, $bsql)) {
 						echo "\n\n Stock ". $trade[2]." ".$trade[1]." is moveing UP in data set  \n";
+						
+						//break the current loop with some stuff 
+						//since we just bought a stock
+						$_SESSION['LOOPBREAK']=1;
+						 return false;//defalut output
+						 $day_trades_used = TRUE;//sets a trade in local vars
+						 $RUN_LIVE= TRUE;//this stops the loop
+						// break;
+						
+						
 						} else {
 						echo "Error: " . $bsql . "<br>" . mysqli_error($conn);
 					}

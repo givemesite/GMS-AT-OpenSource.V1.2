@@ -421,6 +421,12 @@
 			$market_map =     round( map($INDXADV,    "-15", "1","6",    "1"),0,PHP_ROUND_HALF_DOWN);// 10-2, 8-4, 6-1
 			
 			echo " \n\033[1;33m Market Map: $market_map  \033[0m\n";
+			
+					//break the current loop with some stuff 
+						//
+						$_SESSION['LOOPBREAK']=1;
+			
+			
 			if(isset($sim)){
 				//sleep(10);
 			}

@@ -74,7 +74,7 @@
 				
 				
 				
-		$Base_Degradation_Price    = $quantitative_trade[3]       *   0.15;//1-25% losses of the buy price - ALPHA
+		$Base_Degradation_Price    = $quantitative_trade[3]       *   0.25;//1-25% losses of the buy price - ALPHA
 		$Base_Price                = $quantitative_trade[3]       -   $Base_Degradation_Price;	
 		//lost 15% of portfolio 			
 		if ($the_price_now<=$Base_Price 

@@ -75,17 +75,17 @@ $targets = [1.10, 0.95, 1.22, 1.20, 1.19];
 			
 			//the time the program has to think about the price changeing when it buys 
 			if ($old_advs > 4){
-		$next_cell_time = strtotime("+1 seconds");//190-220
+		$next_cell_time = strtotime("+15 seconds");//190-220
 			}else {
-				$next_cell_time = strtotime("+1 seconds");//150-200
+				$next_cell_time = strtotime("+15 seconds");//150-200
 				
 			}
 		
 		if ($old_advs < 3){
-			$next_cell_time = strtotime("+50 seconds");//50-110
+			$next_cell_time = strtotime("+15 seconds");//50-110
 		}
 		if ($old_advs < 2){
-			$next_cell_time = strtotime("+25 seconds");//25-55
+			$next_cell_time = strtotime("+15 seconds");//25-55
 		}
 		
 		//if we are in a sim rember each row is 1 min in a snapshot
@@ -155,7 +155,19 @@ if ($time_now > $last){
 		$bsql = "UPDATE `day_trades` SET `TYPE` = 'CW' WHERE id = ".$Memory_9[0]."";
 							if (mysqli_query($sub_conn, $bsql)) {
 						echo "\n\n Stock ". $Memory_9[2]." ".$Memory_9[1]." setting CW  \n";
+
+						//break the current loop with some stuff 
+						//since we just bought a stock
+						$_SESSION['LOOPBREAK']=1;
+						// return false;//defalut output
+						// $day_trades_used = TRUE;//sets a trade in local vars
+						// $RUN_LIVE= TRUE;//this stops the loop
+
+
+
 						} else {
+							
+
 						echo "Error: " . $bsql . "<br>" . mysqli_error($conn);
 					}
 					usleep(1000);

@@ -252,7 +252,8 @@
 					}
 				}
 				//buy plan	 -  time b 	
-				if ($the_ap == "pm" &&  $the_hour == "1" ||
+				if ($the_ap == "pm" &&  $the_hour == "12" ||
+					$the_ap == "pm" &&  $the_hour == "1" ||
 					$the_ap == "pm" &&  $the_hour == "2" ){
 					$call_trade_bypass   = FALSE;//when its 10 11
 				}

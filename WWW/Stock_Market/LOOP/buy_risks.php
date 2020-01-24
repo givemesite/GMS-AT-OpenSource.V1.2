@@ -24,7 +24,29 @@
 	
 	$call_min = $_SESSION['CL_Start_time'];
 	$last_min = $_SESSION['CL_time'];	
+
+
+if(!isset($sim)){
+	$responce   = (call_trade_brokerage_API($call_type, $quantitative_trade[3], $price, $order_type, $STOCK_QTY_I_CAN_BUY));
+					
+			$json_obj = json_decode($responce);
+			
+			
+					$bias_raw_cost = round(( $json_obj->avg_entry_price ),2,PHP_ROUND_HALF_UP);
 	
+		if ($bias_raw_cost > 0.001){
+		$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
+		//print_r($row);
+		$sql = "UPDATE `buy` SET `BUY_PRICE` = '".$bias_raw_cost."' WHERE id = ".$quantitative_trade[9]."";
+		if (mysqli_query($sub_conn, $sql)) {
+			//  echo "\n\n Stock ". $trade[2]." ".$trade[1]." is moveing down in data set  \n";
+			} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+		mysqli_close($sub_conn);usleep(60);
+		
+	}
+}	
 	
 	//set the start time, if this is not set it wont buy a stock
 	if ($the_hr == 9 && $the_min < 59 && $the_min > 31 
@@ -119,6 +141,49 @@
 				 $_SESSION[($quantitative_trade[1])]['DTI'][1]["LAST_PRICE"] = null;
 				 $_SESSION[($quantitative_trade[1])]['DTI'][2]["LAST_PRICE"] = null;
 				 $_SESSION[($quantitative_trade[1])]['DTI'][3]["LAST_PRICE"] = null;
+		}
+		mysqli_close($sub_conn);usleep(60);
+		
+	}
+	
+	
+	
+		//update the price to follow in the buy table for the higest recoarded value -the hr
+	if ($trade[7] == 'CW' && $stock_was_bught == TRUE && $quantitative_trade[1] == $trade[1]){
+		
+		$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
+		//print_r($row);
+		
+		//if price is larger then last recoarded value
+		if ( $the_price_now>$quantitative_trade[5]){						
+			$sql = "UPDATE `buy` SET `HH` = '".$the_hour."' WHERE id = ".$quantitative_trade[9]."";
+			if (mysqli_query($sub_conn, $sql)) {
+				//  echo "\n\n Stock ". $trade[2]." ".$trade[1]." is moveing down in data set  \n";
+				} else {
+				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+			}
+			
+
+		}
+		mysqli_close($sub_conn);usleep(60);
+		
+	}	//update the price to follow in the buy table for the higest recoarded value - the min 
+	if ($trade[7] == 'CW' && $stock_was_bught == TRUE && $quantitative_trade[1] == $trade[1]){
+		
+		
+		$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
+		//print_r($row);
+		
+		//if price is larger then last recoarded value
+		if ( $the_price_now>$quantitative_trade[5]){						
+			$sql = "UPDATE `buy` SET `HM` = '".$the_min."' WHERE id = ".$quantitative_trade[9]."";
+			if (mysqli_query($sub_conn, $sql)) {
+				//  echo "\n\n Stock ". $trade[2]." ".$trade[1]." is moveing down in data set  \n";
+				} else {
+				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+			}
+			
+
 		}
 		mysqli_close($sub_conn);usleep(60);
 		
@@ -222,7 +287,36 @@
 	
 	$price_to_buy_at = round(map($trade[12], $MIN_STOCK_PRICE, $MAX_STOCK_PRICE, $low_threshold , $high_threshold),4,PHP_ROUND_HALF_UP);
 	
-	echo "\n Trade Watch ".substr($trade[2],0,17) . " 	Price ".$trade[4] ." "  .$price_to_buy_at. "	".$the_price_now ." FREQ Histogram :"." ".$trade[9]." ";
+	echo " Trade Watch ".substr($trade[2],0,17) . " 	Price ".$trade[4] ." "  .$price_to_buy_at. "	".$the_price_now ." FREQ Histogram :"." ".$trade[9]." ";
+	
+///Basic Floor Model	
+//last price indicator
+
+$LAST_PRICE_IND = $_SESSION[($trade[1])]['LPI'];
+
+//ML - MUX  buy model
+$prididct_data= array([$the_price_now,
+								$the_hour,
+								$the_min,
+								$INDXADV,
+								$CHANGE_VOL,
+								$quantitative_trade[19] ,
+								$quantitative_trade[20] ,
+								$quantitative_trade[21] ,
+								$quantitative_trade[5] ,
+								$CHANGE_PCT , 
+							//	(time()),
+							    ($trade[20]), //org price
+								($trade[9]), //FREQ
+								($trade[28]),//org call price
+								($trade[29]),//org gain%
+								($trade[30]) //last 5 days adverage
+							]);//5 day trend
+							
+	//pink noise data							
+		$_SESSION['MODEL_BUILD']['ML_Training']['potentials_samples_MODE'][(time())]= $prididct_data;	
+		$_SESSION['MODEL_BUILD']['ML_Training']['potentials_targets_MODE'][(time())]= $the_price_now;	
+	
 	
 	//echo "\n proxy_Degradation ". $proxy_Degradation."\n";
 	//echo "\n Degradation_Percent ". $Degradation_Percent."\n";
@@ -377,7 +471,7 @@
 			
 			session_start();
 			$index_adv = $_SESSION['INDEXS_ADV'];
-			echo "\n \n\033[1;33m Trade Watch ".substr($trade[2],0,17) . " 	Price ".$trade[4] ." "  .$price_to_buy_at. "	".$the_price_now ." FREQ Histogram :"." ".$trade[9]." \033[0m \n";
+			echo " \n\033[1;33m Trade Watch ".substr($trade[2],0,17) . " 	Price ".$trade[4] ." "  .$price_to_buy_at. "	".$the_price_now ." FREQ Histogram :"." ".$trade[9]." \033[0m \n";
 			
 //AI is just used to help buying its not used for selling at the moment but this will change in 2020
 			
@@ -419,7 +513,34 @@
 			
 			
 			$market_map =     round( map($INDXADV,    "-15", "1","6",    "1"),0,PHP_ROUND_HALF_DOWN);// 10-2, 8-4, 6-1
-			
+
+//last price indicator
+
+$LAST_PRICE_IND = $_SESSION[($trade[1])]['LPI'];
+
+//ML - buy model
+$bprididct_data= array([$the_price_now,
+								$the_hour,
+								$the_min,
+								$INDXADV,
+								$CHANGE_VOL,
+								$quantitative_trade[19] ,
+								$quantitative_trade[20] ,
+								$quantitative_trade[21] ,
+								$quantitative_trade[5] ,
+								$CHANGE_PCT , 
+							//	(time()),
+							    ($trade[20]), //org price
+								($trade[9]), //FREQ
+								($trade[28]),//org call price
+								($trade[29]),//org gain%
+								($trade[30]) //last 5 days adverage
+							]);//5 day trend
+//buy data
+		$_SESSION['MODEL_BUILD']['ML_Training']['BUY_samples_MODE'][(time())]= $bprididct_data;	
+		$_SESSION['MODEL_BUILD']['ML_Training']['BUY_targets_MODE'][(time())]= $the_price_now;
+		
+		
 			echo " \n\033[1;33m Market Map: $market_map  \033[0m\n";
 			
 					//break the current loop with some stuff 
@@ -558,7 +679,7 @@
 					`BUY_CYCLE_TIME`, 
 					`tranAct_id`, `HR`, `MIN`,
 					`AP`, `YEAR`, `MON`, `DAY`, `DAY_SYMBL`, 
-					`GP_id`)
+					`GP_id`,`AG`)
 					VALUES ('".$trade[1]."',
 					'".$price_bught."', 
 					'".$price_bught."',
@@ -575,7 +696,7 @@
 					'".$the_mon."', 
 					'".$the_day."',
 					'".$the_day_symbl."', 
-					'0')";//
+					'0','".$GAIN_Percent."')";//
 					$_SESSION['QTY']= $STOCK_QTY_I_CAN_BUY;
 					$bsql = "UPDATE `day_trades` SET `TYPE` = 'CW', `PRICE`  =  '".$the_price_now ."' WHERE id = ".$trade[0]."";
 					//if responce has '504 Gateway Time-out'

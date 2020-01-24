@@ -18,6 +18,18 @@
 	
 	
 	
+		$sub_conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
+			$mqmquery = "SELECT * FROM `advs` LIMIT 1";
+			if ($aresult=mysqli_query($sub_conn,$mqmquery)){ 
+				// Fetch one and one row
+				while ($get_advsnum=mysqli_fetch_row($aresult))
+				{
+					$old_advs      = $get_advsnum[0];
+					$old_day      = $get_advsnum[2];
+					$old_a      = $get_advsnum[3];
+				}}
+				mysqli_close($sub_conn);usleep(200);		
+				
 	
 	
 	
@@ -71,10 +83,20 @@
 					$psale = 0.25;
 					
 				}
+		
+
+
+				
+				if (($old_a-$old_advs) >0.01){
+				$selloff_pct = abs (($old_a-$old_advs));
+				}else{
+				$selloff_pct = abs (($old_advs-$old_a));
+					
+				}
 				
 				
 				
-		$Base_Degradation_Price    = $quantitative_trade[3]       *   0.25;//1-25% losses of the buy price - ALPHA
+		$Base_Degradation_Price    = $quantitative_trade[3]       *   0.55;//1-35% losses of the buy price - ALPHA
 		$Base_Price                = $quantitative_trade[3]       -   $Base_Degradation_Price;	
 		//lost 15% of portfolio 			
 		if ($the_price_now<=$Base_Price 
@@ -85,7 +107,7 @@
 			$Call_SELLING = TRUE;
 			
 			
-			if ($day_trades_sold<>TRUE){
+			if ($day_trades_sold<>TRUE && isset($trade[1]  ) && $trade[1] <> "" && $the_price_now > 0.001){
 				$qty =   $quantitative_trade[7];
 				
 				//get the price from robinhood
@@ -199,29 +221,64 @@
 	
 	
 	
+				
+			//
+			$over_ride_pct = round(((1 - $quantitative_trade[5] / $quantitative_trade[3]) * 100), 1, PHP_ROUND_HALF_DOWN );
+			//
+			$loss_val = round(((1 - $quantitative_trade[5] / $quantitative_trade[4]) * 100), 1, PHP_ROUND_HALF_DOWN );
 	
 	
 	
 	
 	
+$Ticks_sell  = $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Ticks'];		
 	
 	
+			//account for movement after change 
+			
+			
+			$track_down_trend  = 0;
+			$ADDUPSUM = 0;
+			$ADDDOWNSUM = 0;
+			$track_up_trend  = 0;
+			//up trend nounce
+				$cpoc_test = $_SESSION['MEM_CASH']['ML_Training']["DOWN"];
+				$dpoc_test = $_SESSION['MEM_CASH']['ML_Training']["UP"];
+				
+			//loop for down trend	
+			foreach($cpoc_test as $proc_node){
+				
+			$ADDDOWNSUM = $ADDDOWNSUM + ($proc_node[($trade[1])]['SELL_SAMPLES'][1]);
+				$sell_proc_node = $proc_node[($trade[1])]['SELL_SAMPLES'];
+				
+				
+				$track_up_trend++;
+			}
+		
+			//loop for up trend		
+			foreach($dpoc_test as $proc_node){
+				$ADDUPSUM = $ADDUPSUM + ($proc_node[($trade[1])]['SELL_SAMPLES'][1]);
+				$sell_proc_node = $proc_node[($trade[1])]['SELL_SAMPLES'];
+				
+				
+				$track_down_trend++;
+			}echo "\n";
+			
+			
+			$carrtrierDOWN_sum = round((($ADDDOWNSUM ) / $track_up_trend),4, PHP_ROUND_HALF_UP);
+			$carrtrierUP_sum = round((($ADDUPSUM ) / $track_down_trend),4, PHP_ROUND_HALF_UP);
+				
+				
+			//adverage the two
+			$CARRIR_ADV =($carrtrierDOWN_sum + $carrtrierUP_sum )/2;
+			
+	$ML_sell_model_array= array($carrtrierDOWN_sum, $carrtrierUP_sum , 	$CARRIR_ADV,$Ticks_sell, $loss_val);
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+///Basic Sell Model	
+//last price indicator
+
+$LAST_PRICE_IND = $_SESSION[($trade[1])]['LPI'];
+
 	
 	
 	
@@ -409,6 +466,15 @@
 		//	echo $CHANGE_PCT ; echo "test feld"; sleep(10);
 //sleeper function 	
 //if change in % of a stock is moving fast 	
+
+
+
+
+//a drop of 60% in 20 mins - 3% a min for 5 mins = 20% loss
+
+
+
+//set all vars
 $SYSTEM_OVERIDE= FALSE;
 $MEMM_ARRAY_BUILD= [];	
 $CSELLSample_array= [];	
@@ -424,12 +490,83 @@ $lastVCall_sell  = $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Last'];
 	$ChangeL_sell= $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Change'];	
 	$CPrice_sell = $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['PRICE'];		
 	$CSTF_sell   = $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Time'];	//s	
-	
+	$sticksy_Ticks_sell  = $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['stickey'];	
 	$MEMstart_sell = $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['MEM_start'];		
 	$MEMrecall_sell= $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['MEM_recall'];	
 	
+	
+	$LAST_STICKEY_PRICE  = $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['LAST_STICKEY_PRICE'];	
+	
+		$STICKEY_TIMER= $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['STICKEY_recall'];	
+	$time = time();	
+	
+	
+	
+	
+	
+	
+	
+		$lownpt_map =     round( (map((abs(($quantitative_trade[21]))),    "0.05", "0.55","25",    "5")),0,PHP_ROUND_HALF_DOWN);
+	
+
+
+
+//ML - sell model
+$dprididct_data= array([$the_price_now,
+								$the_hour,
+								$the_min,
+								$INDXADV,
+								$CHANGE_VOL,
+								$quantitative_trade[19] ,
+								$quantitative_trade[20] ,
+								$quantitative_trade[21] ,
+								$quantitative_trade[5] ,
+								$CHANGE_PCT , 
+							//	(time()),
+							    ($trade[20]), //org price
+								($trade[9]), //FREQ
+								($trade[28]),//org call price
+								($trade[29]),//org gain%
+								($trade[30]) //last 5 days adverage
+							]);//5 day trend
+		$_SESSION['MODEL_BUILD']['ML_Training']['SELL_samples_MODE'][(time())]= $dprididct_data;	
+		$_SESSION['MODEL_BUILD']['ML_Training']['SELL_targets_MODE'][(time())]= $the_price_now;	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	if ($STICKEY_TIMER < $time){$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['STICKEY_recall']=null;}
+	if(isset($sim)){
+	if ($STICKEY_TIMER < $time){$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['STICKEY_recall']=($time+1);}
+	//if the sticky price is under the last %
+	if ($LAST_STICKEY_PRICE < ($the_price_now - ($the_price_now *0.03)  )){
+		
+		$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['LAST_STICKEY_PRICE']= $the_price_now;
+	
+	$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['stickey'] = $sticksy_Ticks_sell+1;
+	
+	}
+	
+	
+	}
+	if ($STICKEY_TIMER < $time){$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['STICKEY_recall']=($time+60);
+	
+	
+	}
+
+	
+	
+	
 	//set first recall		
-	$time = time();		
+
 	
 			//map input from price deff  / change
 				$ATestPrice = $CPrice_sell-$the_price_now;
@@ -443,36 +580,45 @@ $lastVCall_sell  = $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Last'];
 		 $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Time'] = null;
 		
 	}
-	
-	if(!isset($CSTF_sell) && 			(abs($loss_val	)) > "7.5"   && $CHANGE_PCT > 50 ||
-			$CSTF_sell ==""   		 && (abs($loss_val	)) > "7.5"   && $CHANGE_PCT > 50 
+	//set data if data is in a loss
+	if(!isset($CSTF_sell) && 			(abs($loss_val	)) > "1.5"    ||
+			$CSTF_sell ==""   		 && (abs($loss_val	)) > "1.5" 
 		//|| 
 	)	
 	{$set_wait=1;	
 	
 	//if we are in a simulation
 	if(isset($sim)){
-				$scroe_Sell = 1;	
+				$scroe_Sell = 1;	//time base
 				}else{
 					
-					$scroe_Sell = 60;
+					$scroe_Sell = 60;//time base
 				}			
 				
 				
-//$CLSample_array = array($time , $the_price_now);
-	//$CSELLSample_array = array_merge ($SCSELLSample_array, ([$CLSample_array])); 
-	//$_SESSION['MEM_CASH']['ML_Training'][$trade[1]]["SELL_SAMPLES"]= $CSELLSample_array;
-				
-				
+
+				//set vars and mem in down trend
 		$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Time']	=$time + $scroe_Sell;//60s * 10min =600 
 		$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['PRICE']= $the_price_now;
 		$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Ticks'] = $Ticks_sell + 1; // a signal to sell
 		$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Change'] = $CHANGE_PCT;
 		
-		
+		//if mem to sell is not set 
 		if ($MEMstart_sell<1 || $MEMstart_sell ==""){
 	 $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['MEM_start']=$time;		
 	 $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['MEM_recall']=$time;	
+			
+			
+			
+			
+			///build array and save it to SELL_cycle
+			
+			$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['SLEEP_ARRAY'][(time())]['ARRAY_Ticks']= $Ticks_sell + 1;
+			$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['SLEEP_ARRAY'][(time())]['time']     = time();
+			$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['SLEEP_ARRAY'][(time())]['price']     = $the_price_now;
+			$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['SLEEP_ARRAY'][(time())]['stock_change']     = $CHANGE_PCT;
+			$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['SLEEP_ARRAY'][(time())]['loss_val']     = $loss_val;
+			
 			
 			
 		}
@@ -497,12 +643,13 @@ $lastVCall_sell  = $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Last'];
 					
 			
 
-
+			//if the price in mem is less then the price now 
 			if ($CPrice_sell <$the_price_now ){		
-			if ($CPrice_sell <>$the_price_now ){	
+			if ($CPrice_sell <>$the_price_now ){	//if the price now is anything but the one in memery
 			//if recall time is less with in 60 secs
+			//if we are in a sim
 	if(isset($sim)){
-$recall_buffer = $MEMrecall_sell + 1;
+$recall_buffer = $MEMrecall_sell + 1;//set recall buffer
 
 	}
 	
@@ -530,7 +677,7 @@ $recall_buffer = $MEMrecall_sell + 1;
 		
 		$recall_buffer = $MEMrecall_sell + 60;
 	}
-
+//set ticks
 if ($recall_buffer < $time && $recall_buffer <> 60&& $recall_buffer <> 1){
 	$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['MEM_recall'] = 0;
 	$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['SUB_Ticks'] = $SUB_Ticks_sell +1;
@@ -579,7 +726,7 @@ if ($recall_buffer < $time && $recall_buffer <> 60&& $recall_buffer <> 1){
 
 				
 			echo "\n\033[4;37mSelling Strategie\033[0m";
-			
+			echo "\nTime: $the_hour:$the_min:$the_ap\n";
 			echo "\n";
 			
 			echo "\n \033[0;96m Time dIV Gain:%" .(abs($time_divergence))."\033[0m \n";
@@ -594,17 +741,23 @@ if ($recall_buffer < $time && $recall_buffer <> 60&& $recall_buffer <> 1){
 			//$SELL_Target	    = $_SESSION['ML_Training'][($SYB)]["SELL_Target"];
 			
 			
-			
+//stuff to sell a trend			
 $CLSample_array = array($time , $the_price_now,(abs($loss_val	)));
 	
-
+	//count all high and lows
+	
+//if the array is not set
 	if (isset($CLSample_array)){
 	$_SESSION['MEM_CASH']['ML_Training']["DOWN"][$time][($trade[1])]["SELL_SAMPLES"]= $CLSample_array;
 	}
 	$poc_test = $_SESSION['MEM_CASH'];
 	//print_r($poc_test );
 			
-			if ($Ticks_sell <10){$set_wait=1;}
+			if ($Ticks_sell <=10){
+				
+				//$set_wait=1;
+			
+			}
 			}else{
 			//build up trend
 			//print_r ($trade[1]);
@@ -623,17 +776,18 @@ $CLSample_array = array($time , $the_price_now,$FACT_CHANGE_PCT);
 			$set_wait=1;	
 			}
 			
-			echo "\n";
-			echo "\033[0;95mRecall Price: R/PN ".$CPrice_sell ."/". $the_price_now."\033[0m \n";
-			
-			echo "\nSleep Timer Sell Ticks:  ". $Ticks_sell; 
-			echo "\nSleep Timer Slot State:  ";print_r($CSTF_sell);echo " / ". $time;
-			echo "\nThe Loss IN Trade: %".(abs($loss_val	));
-			echo "\nWait Timer: ".$set_wait;
 			
 			
 			
 			
+			
+			
+			
+			
+			
+
+			
+			//convert all high and lows for adveraging
 			
 			//account for non change
 			
@@ -660,20 +814,25 @@ $CLSample_array = array($time , $the_price_now,$FACT_CHANGE_PCT);
 		
 			//loop for up trend		
 			foreach($dpoc_test as $proc_node){
-				$ADDUPSUM = $ADDUPSUM + ($proc_node['CEI']['SELL_SAMPLES'][1]);
-				$sell_proc_node = $proc_node['CEI']['SELL_SAMPLES'];
+				$ADDUPSUM = $ADDUPSUM + ($proc_node[($trade[1])]['SELL_SAMPLES'][1]);
+				$sell_proc_node = $proc_node[($trade[1])]['SELL_SAMPLES'];
 				
 				
 				$track_down_trend++;
 			}echo "\n";
 			
-			
+			//adverage all high and lows
 			$carrtrierDOWN_sum = round((($ADDDOWNSUM ) / $track_up_trend),4, PHP_ROUND_HALF_UP);
 			$carrtrierUP_sum = round((($ADDUPSUM ) / $track_down_trend),4, PHP_ROUND_HALF_UP);
 			
 			
 			//adverage the two
 			$CARRIR_ADV =($carrtrierDOWN_sum + $carrtrierUP_sum )/2;
+			$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['SLEEP_ARRAY'][(time())]['carrtrierDOWN_sum']     = $carrtrierDOWN_sum;
+			$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['SLEEP_ARRAY'][(time())]['carrtrierUP_sum']       = $carrtrierUP_sum;
+			$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['SLEEP_ARRAY'][(time())]['CARRIR_ADV']            = $CARRIR_ADV;
+			
+			//keep withen 20% of targets
 			
 			//last price
 			//$CPrice_sell
@@ -682,32 +841,75 @@ $CLSample_array = array($time , $the_price_now,$FACT_CHANGE_PCT);
 			$DCHECKP_Price =$CARRIR_ADV            - ($CARRIR_ADV             * 0.20);
 		$CHECKDCHECKP_Price =$CARRIR_ADV            + ($CARRIR_ADV             * 0.20);
 			//if the price now is above the adv low price 
-			if ($DCHECKP_Price < $the_price_now){
+
+
+	
+			//this will auto adjust
+			if($the_price_now  > $quantitative_trade[3]){ 
+              $set_wait=1;
+
+			}		
+			
+
+
+
+		//	if ($DCHECKP_Price < $the_price_now){
 				
 				
 				
-			}else{
-				if ($the_price_now < $CHECKP_Price ){
-				if ($Ticks_sell >10){
+		//	}else{
+			//	if ($the_price_now < $CHECKP_Price ){
+					
+					
+					//map low point adv
+				
+				if (//$Ticks_sell >$lownpt_map
+				$old_advs > $old_a &&	$quantitative_trade[21] <= 0.10 && $Ticks_sell > 2 ||
+				$quantitative_trade[21] >= 0.10 && $old_advs < $old_a && $Ticks_sell > 5 ||//down market
+				 $old_advs < $old_a && $Ticks_sell > 20 ||//down market
+				$quantitative_trade[21] >= 0.10 && $Ticks_sell > 10 || //slow market
+					$quantitative_trade[21] <  0.10 && $Ticks_sell > 50 //fast market
+				
+				){//7-21
 				$set_wait=0;
 				
 				}
-			}
+			//}
 				
 				else {//
-				
+				$set_wait=1;//up-market
 				}			
 				
-			}
+		//	}
 		
 		
 		//this will auto adjust
 			if($CHECKDCHECKP_Price  > $CPrice_sell){ 
-              $set_wait=1;
+           //   $set_wait=1;
 
 			}
-				echo $set_wait."\n";
+		
 			
+				//if stickys are more then 5 mins
+	if ($sticksy_Ticks_sell > 5){
+		
+		//$set_wait=0;
+	}
+	
+			//	echo $set_wait."\n";
+			
+			
+						
+			
+			echo "\n";
+			echo "\033[0;95mRecall Price: R/PN ".$CPrice_sell ."/". $the_price_now."\033[0m \n";
+			
+			echo "\nSleep Timer Sell Ticks:  ". $Ticks_sell." / ".$lownpt_map; 
+			echo "\nSleep Timer Slot State:  ";print_r($CSTF_sell);echo " / ". $time;
+			echo "\nThe Loss IN Trade: %".(abs($loss_val	));
+			
+			echo "\nSticky To SELL: ".$sticksy_Ticks_sell;
+			echo "\nWait Timer: ".$set_wait;
 			
 			
 			
@@ -717,105 +919,118 @@ $CLSample_array = array($time , $the_price_now,$FACT_CHANGE_PCT);
 			
 			
 			//trending price
-			echo "Trending price U/D/A:";
+			echo "\nTrending price U/D/A:";
 			print_r($carrtrierUP_sum);echo"/".$carrtrierDOWN_sum;echo"/".$CARRIR_ADV;
 			echo "\n";echo "\n";echo "\n";	
 		//to help slow down the sim for your eyes to see
 			if (isset($sim)){
-				//sleep('4');
-			}
+				//usleep('255');
+			//	
+			}//sleep('1');
 	//reset if price goss back up
 
-			
+//ML - sell model
+$cprididct_data= array([$the_price_now,
+								$the_hour,
+								$the_min,
+								$INDXADV,
+								$CHANGE_VOL,
+								$quantitative_trade[19] ,
+								$quantitative_trade[20] ,
+								$quantitative_trade[21] ,
+								$quantitative_trade[5] ,
+								$CHANGE_PCT , 
+							//	(time()),
+							    ($trade[20]), //org price
+								($trade[9]), //FREQ
+								($trade[28]),//org call price
+								($trade[29]),//org gain%
+								($trade[30]) //last 5 days adverage
+							]);//5 day trend
+
+	$AI_OUT=	 AI_CALL_NODE($trade[1],
+							$cprididct_data,
+							$sim,
+							//other stuff for cluster compute
+							$AiNode_server_IP,$AiNode_server_port,$AiNode_server_apiKey);
+							
+//output the price from php ml
+	$ai_call_price = $AI_OUT[0][0];
+
+		$PCT_ai_call_price = round((($ai_call_price)	- ($ai_call_price * 0.04)),2, PHP_ROUND_HALF_UP); 
+		
+//		predict can not be lower then the buy price
+	if ($PCT_ai_call_price  < $quantitative_trade[3] ){
+$PCT_ai_call_price = 0;
+	}
+		
+		//$PCT_ai_call_price = ($ai_call_price);	
+		echo "\nAI Price predict: ".$PCT_ai_call_price;
+			echo "\nThe price now: ".$the_price_now;	
+			if (isset($sim)){
+				sleep(2);
+			}
 			if (
-			//$loss_val <1 && $stock_was_bught <> null && $loss_val <> "" ||
-			//	$loss_wa2 > 0.07	  && $stock_was_bught <> null && $loss_val <> "" && $loss_val <> 0 && isset($loss_val) && $the_price_now > 2.00 ||//0.3-0.7
-			//slppage
 			
 			
-			//things to do 9/4/19 1:am
-			//make backups of the day for emulation done
-			//look at $loss_val >= $loss_freq
-			//put time stuff in to hold off trade 
 			
-			
-			//for all loss 6% in the am and 4% in the pm a script with ai is used changed to 3%am and 2%pm 11/1/19
-			//you can map this to a chance of gain to inturpret a small number
-			//but to do this you need a market index marker to wrrent
-			
+		
 			// - ALPHA
 			
-			//in simulation test
-			//for cei 
-			//($Ticks_sell > 44 )||
+//php ml input
+			$quantitative_trade[21] >= 0.20 &&//slow market
+			$old_advs > $old_a && //up market
+			$PCT_ai_call_price > $the_price_now && 
+			$Ticks_sell > 10 ||
+			$old_advs > $old_a && //up market
+			$PCT_ai_call_price > $the_price_now && 
+			$Ticks_sell > 10 ||
+			$old_advs < $old_a && //down market
+			$PCT_ai_call_price > $the_price_now && 
+			$Ticks_sell > 5 ||
+			$PCT_ai_call_price > $the_price_now &&
+			$quantitative_trade[21] <  0.10 && 
+			$Ticks_sell > 50 ||
+			$quantitative_trade[21] >  0.10 && 
+			$PCT_ai_call_price==0 && $Ticks_sell >= 10 || 
 			
 			
+//slow market
+			$old_advs < $old_a &&
+			//if the trade is not good to start with
+			$quantitative_trade[21] >= 0.20 &&//slow market
+			(abs($loss_val	)) > "3.7" && $the_ap == "am"||		
+			$set_wait <>1&&
+			//if the trade is not good to start with
+			$quantitative_trade[21] >= 0.10 &&//slow market
+			(abs($loss_val	)) > "13.7" && $the_ap == "am"||
 			
-			//keep when under a 40% gain untill a 3% loss stock made under 40%
-			(abs($loss_val	)) > "3.0" && $the_ap == "am" && (abs($over_ride_pct)) < 20 && $CHANGE_PCT <=50 ||
 			
-			
-			//if CHANGE_PCT is above 40% we need to make it wait 10 mins (in chunks) or use momentum
-			//NOTE: you can see more then 50% loss of the gains right as the stock is inclineing 
 
-			$set_wait <>1 &&	
-			(abs($loss_val	)) > "7.5" && $the_ap == "am"  && $CHANGE_PCT > 50 ||
-			
-			
-			$set_wait <>1 &&	
-			(abs($loss_val	)) > "7.5" && $the_ap == "pm"  && $CHANGE_PCT > 50 ||
-			
-			
-			
-			
-			//stuff to sell later in the day (mostlet around / after lunch)
-			//$call_it_quits == 'Y' && 
-			$set_wait <>1 &&
-			(abs($loss_val	)) > "2.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm"  && (abs($over_ride_pct)) < 20||
-			
-			//$call_it_quits == 'Y' && 
-			$set_wait <>1 &&
-			(abs($loss_val	)) > "40.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "am" && (abs($over_ride_pct)) < 50||
-			//$call_it_quits == 'Y' && 
-			$set_wait <>1 &&
-			(abs($loss_val	)) > "35.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm" && (abs($over_ride_pct)) < 50||			
+//fast market
+			$set_wait <>1&&
+			//if the trade is not good to start with
+			  // &&//fast market
+			(abs($loss_val	)) > "13.7" && $the_ap == "pm"  && $the_hour>=1 && $the_hour<=12 &&   $CHANGE_PCT < 150||
 
-			//$call_it_quits == 'Y' && 
 			$set_wait <>1 &&
-			(abs($loss_val	)) > "50.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "am" && (abs($over_ride_pct)) > 100||
-			//$call_it_quits == 'Y' && 
-			$set_wait <>1 &&
-			(abs($loss_val	)) > "45.0" && ( abs($time_divergence)) > "10.0" && $the_ap == "pm" && (abs($over_ride_pct)) > 100||
+						//if the trade is not good to start with
+			$quantitative_trade[21] <= 0.10 &&//fast market
+			(abs($loss_val	)) > "22.00" && $the_ap == "pm"  && $the_hour>=1 && $the_hour<=12 && $CHANGE_PCT > 150 && $CHANGE_PCT < 250 ||
 			
-			//the time divergence scripts are used for loss above 6%
-			( abs($time_divergence))			 >=		"6.0" && 
-			(abs($loss_val	)) 					 > 		"6.0" &&  
-			(abs($loss_val	))  				 >= 	( abs($time_divergence)) &&
-			$stock_was_bught 					 <> 	null  && 
-			$loss_val <> 0 		&&
-			$loss_val <> "" 	&& 
-			isset($loss_val) 	
-			||//1.0-2.0
+//slow market morning loss
+			$set_wait <>1&&
+			//if the trade is not good to start with
+			  // &&//fast market
+			  $old_advs < $old_a && //market is less then old market
+			 $quantitative_trade[21] <= 0.10 &&//fast market
+			(abs($loss_val	)) > "13.7" && $the_ap == "am"  && $the_hour>=11 &&  $CHANGE_PCT < 150||
+
+		
+	//sell b4 close		
 			
-			//$loss_val 		  >=  -1.8 		  && $stock_was_bught <> null && $loss_val <> "" && $loss_val <> 0 && isset($loss_val) && $the_price_now > 1.00 ||//0.3-0.7
-			
-			
-			//buffer protect %
-			//	$ECH_LOSS_VAL 	  <=  $loss_freq  && $stock_was_bught <> null && $loss_val <> "" && isset($loss_val) ||
-			
-			//gains under loss
-			//$loss_val		  <=  $loss_freq  && $stock_was_bught <> null && $loss_val <> "" && isset($loss_val) ||
-			
-			
-			
-				$the_hour == 3 && $the_min > 55 && $the_min < 59 && $the_ap=="pm" && $Call_SELLING <> TRUE //catch all to sell off stock by the end of the day 
-			
-			
-			
-			
-			
-			
-			//	$the_price_now    <=  $MPA_loss   && $stock_was_bught <> null
+				$the_hour == 3 && $the_min > 55 && $the_min <= 59 && $the_ap=="pm" && $Call_SELLING <> TRUE //catch all to sell off stock by the end of the day 
+
 			
 			){	
 				
@@ -867,6 +1082,25 @@ $CLSample_array = array($time , $the_price_now,$FACT_CHANGE_PCT);
 					}
 					$price_now = 0;	
 					$STOCK_QTY_I_CAN_SELL = 0;
+					
+					$sell_array = $_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['SLEEP_ARRAY'];
+					foreach($sell_array as $sell_node){
+						
+						$add_node .=   " ( ".
+						$sell_node['carrtrierDOWN_sum'] . " | ".
+						$sell_node['carrtrierUP_sum']   . " | ".
+						$sell_node['CARRIR_ADV'] 		. " | ".
+						$sell_node['ARRAY_Ticks']		. " | ".
+						$sell_node['time']  			 . " | ".
+						$sell_node['price']    			 . " | ".
+						$sell_node['stock_change']  	 . " | ".
+						$sell_node['loss_val']    		 . " | " . " ) \n";
+			
+						 
+						
+					}
+					
+					
 					//	$conn = MYSQL_CONNECTOR($servername, $username, $password, $dbname);
 					$sql = "INSERT INTO `cycle_sell` (`trading_name`, 
 					`MAX_POINT_ADV`,
@@ -886,7 +1120,7 @@ $CLSample_array = array($time , $the_price_now,$FACT_CHANGE_PCT);
 					'SELL', 
 					'".$qty."', 
 					'".$time."',
-					'Loss is $loss_val Divergence %". $time_divergence." ".$responce."',
+					'Loss is $loss_val Divergence %". $time_divergence." ".$responce.$add_node."',
 					'".$the_hour."',
 					'".$the_min."', 
 					'".$the_ap."', 

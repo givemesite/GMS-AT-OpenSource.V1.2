@@ -95,6 +95,86 @@
 	session_start();
 	include("$SERVER_DIR/fibonacci/seo/seo_investing_api_indexs.php");
 	
+	//this function calls to php ml
+	function AI_CALL_NODE($symb_x,$predict,$hash_sim,$AiNode_server_IP,$AiNode_server_port,$AiNode_server_apiKey){
+		
+		
+		
+		
+//sample training from model 
+$nodesample = array(["test",1,2,3,5]);
+//$sample= array([$the_price_now,$the_hr ]);
+$samples = [[1,1,5,5,"B",$nodesample], [1,2], [2,3], [3,45], [4,6]];			
+//$samples = [[60-6-51], [61-6-51], [62-6-5], [63-6-5], [64-6-5]];
+
+
+
+//training from real time price 
+$targets = [1.10, 0.95, 1.22, 1.20, 1.19];
+	//print_r($samples);
+	
+	session_start();
+	
+	$test = $_SESSION['ML_Training'];
+	
+	//echo $test;
+	
+	$key_secret = "C:/php/www/Stock_Market/API/api.KEY"; // I was running the code on localhost, and hence the path!
+		$api_key = file_get_contents($key_secret);
+		$url = "http://127.0.0.1/Stock_Market/ML/";
+		$cookie = "C:/php/www/Stock_Market/API/AI.COOKIE"; // I was running the code on localhost, and hence the path!
+		$fields_string = '';
+		$user = $api_key ;
+		$pass = $api_secret;
+		$submit = "AI"; //
+$rpdt =array([76]);
+$pdct_a = json_encode($predict);
+		$array_a = json_encode($samples);
+		$array_b = json_encode($targets);
+		
+		
+		
+		$fields = array(
+		'API'=>urlencode($api_key),
+		'id'=>urlencode($pass),
+		'hash_sim'=>urlencode($hash_sim),
+		
+		//'array_a'=>urlencode($array_a),
+		//'array_b'=>urlencode($array_b),
+				'predict'=>urlencode($pdct_a),
+	//'predict'=>urlencode($pdct_a),
+		'USE'=>urlencode($submit)
+		//'USE'=>urlencode($submit)
+        );
+		
+		//url-ify the data for the POST
+		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+		rtrim($fields_string,'&');
+//	if (!isset($hash_sim)){	
+		$ch = curl_init ($url);
+		curl_setopt($ch,CURLOPT_ENCODING , "gzip");
+		curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );
+		curl_setopt($ch,CURLOPT_POST,count($fields));
+		curl_setopt($ch,CURLOPT_POSTFIELDS,$fields_string);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+		curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie);
+	// Decode the response.
+		ob_start();
+		//execute post
+		$result = (curl_exec($ch));
+		$out1 = ob_get_contents();
+		ob_end_clean();
+		curl_close($ch);
+		
+	//}
+		
+		$dec_result = json_decode($result);
+	//print_r($result);die();
+		return ($dec_result);
+		
+		
+	}
+	
 	
 	function WATCH_STOCKS($stocks_watch_mode= null,$SERVER_DIR= null,$BACK_CALL= null,$emu= null,$sim= null,$in_loop_count= null,  $sql_inject = null, $Z_pre_sql_inject = null){
 	$leep_A = "10";
@@ -696,6 +776,18 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 								usleep($leep_D);
 								
 								
+								
+								
+		$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Time']	=null;//60s * 10min =600 
+		$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['PRICE']= null;
+		$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Ticks'] = null; // a signal to sell
+		$_SESSION['CORE_TIMEBASE']['sell_sleep_timer']['Change'] = null;
+		$_SESSION['MEM_CASH']= null;
+		$_SESSION['ML_Training']= null;	
+								
+								
+								
+								
 							}
 		}							usleep($leep_B); 
 							//	echo "\n The Price Now:".$the_price_now."\n";
@@ -1130,12 +1222,12 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 								
 											if (	$LINK_CHOICE == "finviz"){
 												if ($sim["sim"]==FALSE){
-												$the_price_now = $finviz_price_now;
+												$the_price_now = round($finviz_price_now,2,PHP_ROUND_HALF_UP);
 												}
 												}
 											if (!isset($the_price_now)){//if its not set
 												$test_the_price_now 	=  $trend_glob->{'1. open'};
-												$the_price_now   		=  $trend_glob->{'1. open'};
+												$the_price_now   		=  round(($trend_glob->{'1. open'}),2,PHP_ROUND_HALF_UP);
 												}else{//if it is set
 													if($finviz_price_now == $test_the_price_now){
 														//all good
@@ -1146,7 +1238,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 												
 												}
 											
-										
+									//	if ($sim["sim"]==TRUE){	if (!isset($the_price_now)){$RUN_LIVE=FALSE;}}
 										
 									
 									// $model .
@@ -1164,7 +1256,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 									
 									
 									}
-																		
+										if($RUN_LIVE<>FALSE && $the_price_now  > 0.001){								
 									
 									//if we dont have price data
 									//	if (!isset($the_price_now))
@@ -1175,7 +1267,7 @@ if ($dresult=mysqli_query($sub_conn,$hquery)){
 										include("c:/php/WWW/Stock_Market/LOOP/buy_risks.php");																						
 									
 
-									
+										}$RUN_LIVE=NULL;
 									
 									if(isset($trend_glob)){
 
